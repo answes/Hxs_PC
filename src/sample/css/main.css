@@ -1,0 +1,329 @@
+
+/*
+top
+ */
+.root{
+    -fx-background-color:linear-gradient(#4E8592, #61a2b1);
+}
+
+
+#logo_tiele{
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+}
+#logo_second_title{
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+}
+#bt_top_system{
+    -fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
+    -fx-background-color: #00000000;
+}
+#bt_top_system:hover {
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+#bt_top_zijin{
+    -fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
+    -fx-background-color: #00000000;
+}
+#bt_top_zijin:hover {
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+#bt_top_util{
+    -fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
+    -fx-background-color: #00000000;
+}
+#bt_top_util:hover {
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+#bt_scale{
+     -fx-text-fill: white;
+     -fx-font-family: "Arial Narrow";
+    -fx-background-color: #00000000;
+ }
+#bt_scale:hover{
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+
+
+#bt_zoom{
+    -fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
+    -fx-background-color: #00000000;
+}
+#bt_zoom:hover{
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+
+#bt_close{
+    -fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
+    -fx-background-color: #00000000;
+}
+#bt_close:hover{
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+/*
+center
+ */
+#center_root{
+    -fx-background-color:transparent;
+}
+#fenshi{
+    -fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
+    -fx-background-color: #00000000;
+}
+#fenshi:hover{
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+
+
+#oneMinute{
+    -fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
+    -fx-background-color: #00000000;
+}
+#oneMinute:hover{
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+
+#fiveMinute{
+    -fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
+    -fx-background-color: #00000000;
+}
+#fiveMinute:hover{
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+
+#tenMinute{
+    -fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
+    -fx-background-color: #00000000;
+}
+#tenMinute:hover{
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+
+#fifteenMinute{
+    -fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
+    -fx-background-color: #00000000;
+}
+#fifteenMinute:hover{
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+
+#thrityMinute{
+    -fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
+    -fx-background-color: #00000000;
+}
+#thrityMinute:hover{
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+
+#sixtyMinute{
+    -fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
+    -fx-background-color: #00000000;
+}
+#sixtyMinute:hover{
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+
+#day{
+    -fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
+    -fx-background-color: #00000000;
+}
+#day:hover{
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+
+#week{
+    -fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
+    -fx-background-color: #00000000;
+}
+#week:hover{
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+#month{
+    -fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
+    -fx-background-color: #00000000;
+}
+#month:hover{
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+
+#to_transaction{
+    -fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
+    -fx-background-color: #00000000;
+}
+#to_transaction:hover{
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+/**
+tableviwe css start
+ */
+.table-view {
+    -fx-border-width: 1px;
+    -fx-border-color: #CACACA;
+    -fx-background-color: transparent;
+}
+
+.table-view:focused {
+    -fx-background-color: transparent;
+}
+
+.table-view .table-cell {
+    -fx-font-size: 12px;
+}
+
+.table-view .filler {
+    -fx-background-color: #BDE8FF;
+}
+
+.table-view .text {
+    -fx-text-fill: red;
+}
+
+.table-view .column-header {
+    -fx-background-color: #BDE8FF;
+    -fx-pref-height: 37px;
+    -fx-border-width: 1px;
+    -fx-border-color: #D9D9D9;
+    -fx-border-insets: -2px -2px 0px -2px;
+}
+
+.table-view .column-header-background .label {
+    -fx-text-fill: #363739;
+    -fx-font-weight: normal;
+    -fx-font-size: 12px;
+}
+
+.table-row-cell {
+    /*行高*/
+    -fx-cell-size: 35px;
+}
+
+.table-row-cell .cell {
+    -fx-alignment: center;
+    -fx-text-fill: #333333;
+}
+
+.table-view .table-cell:selected {
+    -fx-text-fill: white;
+}
+
+.table-view .table-column .column-header {
+    -fx-background-color: #363739;
+}
+
+.cell {
+    /*-fx-border-width: 0px 1px 0 0;*/
+    /*-fx-border-color: #CACACA;*/
+}
+
+.table-view .scroll-bar {
+    -fx-background-color: transparent;
+}
+
+.viewport {
+    -fx-background-color: white;
+}
+
+.table-view .text-field {
+    -fx-font-size: 12px;
+    -fx-padding: 6px 10px 5px;
+    -fx-background-insets: -1;
+    -fx-background-color: #b7e1f9;
+    -fx-border-width: 2px;
+    -fx-border-color: #25B3FA;
+}
+
+.table-view .text-field:hover {
+    -fx-border-color: #25B3FA;
+}
+/**
+tableviwe css end
+ */
+
+/**
+buttom start
+ */
+#btm_top{
+    -fx-background-color: transparent;
+}
+
+#bt_buy{
+    -fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
+    -fx-background-color: #00000000;
+}
+#bt_buy:hover{
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+#bt_sell{
+    -fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
+    -fx-background-color: #00000000;
+}
+#bt_sell:hover{
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+#bt_cancel{
+    -fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
+    -fx-background-color: #00000000;
+}
+#bt_cancel:hover{
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+#bt_deal{
+    -fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
+    -fx-background-color: #00000000;
+}
+#bt_deal:hover{
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+#bt_have{
+    -fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
+    -fx-background-color: #00000000;
+}
+#bt_have:hover{
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+#bt_refresh{
+    -fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
+    -fx-background-color: #00000000;
+}
+#bt_refresh:hover{
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+/*#bt_mix{*/
+     /*-fx-text-fill: white;*/
+     /*-fx-font-family: "Arial Narrow";*/
+     /*-fx-background-color: #00000000;*/
+ /*}*/
+/*#bt_mix:hover{*/
+    /*-fx-background-color: linear-gradient(#2A5058, #61a2b1);*/
+/*}*/
+#bt_lock , #bt_mix {
+    -fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
+    -fx-background-color: #00000000;
+}
+#bt_lock , #bt_mix:hover{
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}

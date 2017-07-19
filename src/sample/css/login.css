@@ -1,0 +1,75 @@
+
+/* 登陆界面*/
+.root {
+    -fx-background-image: url("../image/bg.png");
+}
+/*
+.button {
+    -fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
+    -fx-font-weight: bold;
+    -fx-background-color: linear-gradient(#61a2b1, #2A5058);
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+
+.button:hover {
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+*/
+#lb_to_official_website{
+    -fx-text-fill:blue;
+}
+
+#loginClose{
+    -fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
+    -fx-font-weight: bold;
+    -fx-background-color:"#00000000";
+}
+#loginClose:hover {
+    -fx-background-color: "#30ffffff";
+}
+
+#bt_alone {
+    -fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
+    -fx-font-weight: bold;
+    -fx-background-color: linear-gradient(#61a2b1, #2A5058);
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+#bt_alone:hover {
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+
+#bt_transaction {
+    -fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
+    -fx-font-weight: bold;
+    -fx-background-color: linear-gradient(#61a2b1, #2A5058);
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+
+#bt_transaction:hover{
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+/* main 界面*/
+
+#titlebarl{
+    -fx-background-color: #61a2b1;
+}
+#titleName {
+ -fx-text-fill: brown;
+    -fx-font-family: "Arial Narrow";
+    -fx-font-weight: bold;
+}
+#titleDetails{
+    -fx-text-fill: brown;
+    -fx-font-family: "Arial Narrow";
+    -fx-font-weight: bold;
+}
+#mian_root{
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+#bt_exit{
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
