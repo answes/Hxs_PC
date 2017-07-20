@@ -1,0 +1,68 @@
+#bt_buy{
+    -fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
+    -fx-background-color: #00000000;
+}
+#bt_buy:hover{
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+#bt_sell{
+    -fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
+    -fx-background-color: #00000000;
+}
+#bt_sell:hover{
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+#bt_cancel{
+    -fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
+    -fx-background-color: #00000000;
+}
+#bt_cancel:hover{
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+#bt_deal{
+    -fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
+    -fx-background-color: #00000000;
+}
+#bt_deal:hover{
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+#bt_have{
+    -fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
+    -fx-background-color: #00000000;
+}
+#bt_have:hover{
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+#bt_refresh{
+    -fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
+    -fx-background-color: #00000000;
+}
+#bt_refresh:hover{
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+#bt_mix{
+    -fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
+    -fx-background-color: #00000000;
+}
+#bt_mix:hover{
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+#bt_lock  {
+    -fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
+    -fx-background-color: #00000000;
+}
+#bt_lock {
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+#lb_bottom_title{
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+}

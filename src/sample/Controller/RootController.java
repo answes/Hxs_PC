@@ -1,12 +1,16 @@
 package sample.Controller;
 
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
@@ -16,10 +20,13 @@ import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import sample.bean.ComeMsg;
 import sample.bean.Commodity;
+import sample.util.AppDatas;
 import sample.util.Constant;
 import sample.util.ControlledStage;
 import sample.util.StageController;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -27,28 +34,28 @@ import java.util.ResourceBundle;
  * Created by bigshark on 2017/7/17.
  */
 public class RootController implements ControlledStage, Initializable {
-    private  StageController myController;
+    private StageController myController;
 
     @FXML
     private TableView<Commodity> tb_goods;
     @FXML
-    private TreeView<String> treeView;
-    @FXML
     private WebView web;//k线图
     @FXML
     private AnchorPane kView;
-    @FXML
-    private TableView<ComeMsg> tb_details;
-    @FXML
-    private Label lb_bottom_title;
+
+
     @FXML
     private AnchorPane bottom_root;
     @FXML
     private BorderPane view_root;
 
+    @FXML
+    private AnchorPane bottom_details;
+
     private WebEngine webEngine;
 
     private boolean isKLine;
+
     private boolean isMinWindow;
 
     @Override
@@ -56,114 +63,96 @@ public class RootController implements ControlledStage, Initializable {
         initData();
         onClick();
         web.setContextMenuEnabled(false);
-        webEngine  = web.getEngine();
+        webEngine = web.getEngine();
     }
 
     private void initData() {
         initGoodTable();
-        initTreeView();
         initTranstasionTable();
+        initBottom();
+    }
+
+    private void initBottom() {
+        AnchorPane loader = null;
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/main_bottom.fxml"));
+        try {
+            loader = fxmlLoader.load();
+            bottom_root.getChildren().add(loader);
+            ((MainBottomController)fxmlLoader.getController()).initDate(webEngine,isKLine,view_root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
      * 初始化交易详情列表
      */
     private void initTranstasionTable() {
-        //设置数据源
-        final ObservableList<ComeMsg> datas = FXCollections.observableArrayList(new ComeMsg(8001,"木糖醇",23.0,25.0,11,300,100,500,0.02,5000)
-        ,new ComeMsg(8001,"木糖醇",23.0,25.0,11,300,100,500,0.02,5000)
-        ,new ComeMsg(8001,"木糖醇",23.0,25.0,11,300,100,500,0.02,5000));
-
-
-        TableColumn commNum = new TableColumn("商品代码");
-        commNum.setMinWidth(100);
-        commNum.setCellValueFactory(
-                new PropertyValueFactory<>("commNum"));
-
-        TableColumn commName = new TableColumn("商品名称");
-        commName.setMinWidth(100);
-        commName.setCellValueFactory(
-                new PropertyValueFactory<>("commName"));
-
-        TableColumn vagPrice = new TableColumn("平均价");
-        vagPrice.setMinWidth(100);
-        vagPrice.setCellValueFactory(
-                new PropertyValueFactory<>("vagPrice"));
-
-        TableColumn nowPrice = new TableColumn("最新价");
-        nowPrice.setMinWidth(100);
-        nowPrice.setCellValueFactory(
-                new PropertyValueFactory<>("nowPrice"));
-
-        TableColumn haveNum = new TableColumn("拥有量");
-        haveNum.setMinWidth(100);
-        haveNum.setCellValueFactory(
-                new PropertyValueFactory<>("haveNum"));
-
-        TableColumn loan = new TableColumn("贷款");
-        loan.setMinWidth(100);
-        loan.setCellValueFactory(
-                new PropertyValueFactory<>("loan"));
-
-        TableColumn canUseNumber = new TableColumn("可用数量");
-        canUseNumber.setMinWidth(100);
-        canUseNumber.setCellValueFactory(
-                new PropertyValueFactory<>("canUseNumber"));
-
-        TableColumn chichangyingkui = new TableColumn("持有亏损");
-        chichangyingkui.setMinWidth(100);
-        chichangyingkui.setCellValueFactory(
-                new PropertyValueFactory<>("chichangyingkui"));
-
-        TableColumn sclae = new TableColumn("盈亏比例");
-        sclae.setMinWidth(100);
-        sclae.setCellValueFactory(
-                new PropertyValueFactory<>("sclae"));
-
-        TableColumn maketValue = new TableColumn("市值");
-        maketValue.setMinWidth(100);
-        maketValue.setCellValueFactory(
-                new PropertyValueFactory<>("maketValue"));
-
-        tb_details.setItems(datas);
-        tb_details.getColumns().setAll( commNum, commName,vagPrice,nowPrice,haveNum,loan,canUseNumber,chichangyingkui,sclae,maketValue);
-    }
-
-    /**
-     * 初始化树形控件
-     */
-    private void initTreeView() {
-        TreeItem<String> root = new TreeItem<>();
-        root.setExpanded(true);
-
-        TreeItem<String> root1 = new TreeItem<>("交易");
-        root1.setExpanded(true);
-        root1.getChildren().addAll(
-                new TreeItem<>("买入"),
-                new TreeItem<>("卖出"),
-                new TreeItem<>("撤单"),
-                new TreeItem<>("预埋单")
-        );
-        TreeItem<String> root2 = new TreeItem<>("查询");
-        root2.setExpanded(true);
-        root2.getChildren().addAll(
-                new TreeItem<>("资金信息"),
-                new TreeItem<>("委托查询"),
-                new TreeItem<>("成交查询"),
-                new TreeItem<>("持仓汇总"),
-                new TreeItem<>("持仓明细"),
-                new TreeItem<>("系统公告")
-        );
-        root.getChildren().addAll(root1,root2);
-        treeView.setShowRoot(false);
-        treeView.setRoot(root);
+//        //设置数据源
+//        final ObservableList<ComeMsg> datas = FXCollections.observableArrayList(new ComeMsg(8001,"木糖醇",23.0,25.0,11,300,100,500,0.02,5000)
+//        ,new ComeMsg(8001,"木糖醇",23.0,25.0,11,300,100,500,0.02,5000)
+//        ,new ComeMsg(8001,"木糖醇",23.0,25.0,11,300,100,500,0.02,5000));
+//
+//
+//        TableColumn commNum = new TableColumn("商品代码");
+//        commNum.setMinWidth(100);
+//        commNum.setCellValueFactory(
+//                new PropertyValueFactory<>("commNum"));
+//
+//        TableColumn commName = new TableColumn("商品名称");
+//        commName.setMinWidth(100);
+//        commName.setCellValueFactory(
+//                new PropertyValueFactory<>("commName"));
+//
+//        TableColumn vagPrice = new TableColumn("平均价");
+//        vagPrice.setMinWidth(100);
+//        vagPrice.setCellValueFactory(
+//                new PropertyValueFactory<>("vagPrice"));
+//
+//        TableColumn nowPrice = new TableColumn("最新价");
+//        nowPrice.setMinWidth(100);
+//        nowPrice.setCellValueFactory(
+//                new PropertyValueFactory<>("nowPrice"));
+//
+//        TableColumn haveNum = new TableColumn("拥有量");
+//        haveNum.setMinWidth(100);
+//        haveNum.setCellValueFactory(
+//                new PropertyValueFactory<>("haveNum"));
+//
+//        TableColumn loan = new TableColumn("贷款");
+//        loan.setMinWidth(100);
+//        loan.setCellValueFactory(
+//                new PropertyValueFactory<>("loan"));
+//
+//        TableColumn canUseNumber = new TableColumn("可用数量");
+//        canUseNumber.setMinWidth(100);
+//        canUseNumber.setCellValueFactory(
+//                new PropertyValueFactory<>("canUseNumber"));
+//
+//        TableColumn chichangyingkui = new TableColumn("持有亏损");
+//        chichangyingkui.setMinWidth(100);
+//        chichangyingkui.setCellValueFactory(
+//                new PropertyValueFactory<>("chichangyingkui"));
+//
+//        TableColumn sclae = new TableColumn("盈亏比例");
+//        sclae.setMinWidth(100);
+//        sclae.setCellValueFactory(
+//                new PropertyValueFactory<>("sclae"));
+//
+//        TableColumn maketValue = new TableColumn("市值");
+//        maketValue.setMinWidth(100);
+//        maketValue.setCellValueFactory(
+//                new PropertyValueFactory<>("maketValue"));
+//
+//        tb_details.setItems(datas);
+//        tb_details.getColumns().setAll( commNum, commName,vagPrice,nowPrice,haveNum,loan,canUseNumber,chichangyingkui,sclae,maketValue);
     }
 
     /**
      * 初始化商品列表
      */
-    private void  initGoodTable() {
-        treeView.setEditable(false);
+    private void initGoodTable() {
+
         //设置数据源
         final ObservableList<Commodity> datas = FXCollections.observableArrayList(new Commodity(1, "80008", "人参糖", 12.0, 10.3, 30, 0.12, 0.03, 35.0, 9.5, 20.3, 25.5, 56, 25.6, 33, 80, 23.1, 22.3, 10000, 0.00, 0.00, 0.00)
                 , new Commodity(2, "80008", "芝麻糖", 12.0, 10.3, 20, 1.12, 0.03, 35.0, 9.5, 20.3, 25.5, 56, 25.6, 33, 80, 23.1, 22.3, 10000, 0.00, 0.00, 0.00)
@@ -301,163 +290,116 @@ public class RootController implements ControlledStage, Initializable {
     }
 
     private void onClick() {
-    }
-
-    /**
-     * 买入
-     * @param event
-     */
-    public void buyOnClick(ActionEvent event){
-        lb_bottom_title.setText("买入");
-    }
-
-    /**
-     * 卖出
-     * @param event
-     */
-    public void sellOnClick(ActionEvent event){
-        lb_bottom_title.setText("卖出");
-    }
-
-    /**
-     * 撤单
-     * @param event
-     */
-    public void cancelOnClick(ActionEvent event){
-        lb_bottom_title.setText("撤单");
-    }
-
-    /**
-     * 成交
-     * @param event
-     */
-    public void dealOnClick(ActionEvent event){
-        lb_bottom_title.setText("成交查询");
-    }
-
-    /**
-     * 持仓
-     * @param event
-     */
-    public void haveOnClick(ActionEvent event){
-        lb_bottom_title.setText("持仓汇总");
-    }
-
-    /**
-     * 刷新
-     * @param event
-     */
-    public void refreshOnClick(ActionEvent event){
 
     }
 
-    /**
-     * 最小化
-     * @param event
-     */
-    public void mixOnClick(ActionEvent event){
-        view_root.setBottom(null);
-        if(isKLine){
-            //webEngine.load(getClass().getResource("../html/kLine.html").toExternalForm());
-            webEngine.reload();
-        }
 
-    }
 
-    /**
-     * 上锁
-     * @param event
-     */
-    public void lockOnClick(ActionEvent event){
-
-    }
-
-    public void toTranstion(ActionEvent e){
+    public void toTranstion(ActionEvent e) {
         view_root.setBottom(bottom_root);
-        if(isKLine){
+        if (isKLine) {
             //webEngine.load(getClass().getResource("../html/kLine.html").toExternalForm());
             webEngine.reload();
         }
     }
-
 
 
     /**
      * 分时
+     *
      * @param event
      */
-    public void fenshiKLine(ActionEvent event){
-
+    public void fenshiKLine(ActionEvent event) {
+        kView.setVisible(true);
+        tb_goods.setVisible(false);
+        isKLine = true;
+        webEngine.load(getClass().getResource("../html/trend.html").toExternalForm());
     }
 
     /**
      * 一分K线
+     *
      * @param event
      */
-    public void oneMinuteKLine(ActionEvent event){
+    public void oneMinuteKLine(ActionEvent event) {
 
     }
 
     /**
      * 5分K线
+     *
      * @param event
      */
-    public void fiveMinuteKLine(ActionEvent event){
+    public void fiveMinuteKLine(ActionEvent event) {
 
     }
 
     /**
      * 十分K线
+     *
      * @param event
      */
-    public void tenMinuteKLine(ActionEvent event){
+    public void tenMinuteKLine(ActionEvent event) {
 
     }
+
     /**
      * 十五分K线
+     *
      * @param event
      */
-    public void fifteenMinuteKLine(ActionEvent event){
+    public void fifteenMinuteKLine(ActionEvent event) {
 
     }
+
     /**
      * 三十分K线
+     *
      * @param event
      */
-    public void thrityMinuteKLine(ActionEvent event){
+    public void thrityMinuteKLine(ActionEvent event) {
 
     }
+
     /**
      * 六十分K线
+     *
      * @param event
      */
-    public void sixtyMinuteKLine(ActionEvent event){
+    public void sixtyMinuteKLine(ActionEvent event) {
 
     }
+
     /**
      * 一天K线
+     *
      * @param event
      */
-    public void dayKLine(ActionEvent event){
+    public void dayKLine(ActionEvent event) {
 
     }
+
     /**
      * 一周K线
+     *
      * @param event
      */
-    public void weekKLine(ActionEvent event){
+    public void weekKLine(ActionEvent event) {
 
     }
+
     /**
      * 一个月K线
+     *
      * @param event
      */
-    public void monthKLine(ActionEvent event){
+    public void monthKLine(ActionEvent event) {
 
     }
 
     /**
      * 关闭应用
+     *
      * @param event
      */
     public void closeWindow(ActionEvent event) {
@@ -466,21 +408,23 @@ public class RootController implements ControlledStage, Initializable {
 
     /**
      * 缩放窗口
+     *
      * @param event
      */
-    public void zoomWindow(ActionEvent event){
+    public void zoomWindow(ActionEvent event) {
         myController.getStage(Constant.rootViewID).setIconified(true);
         System.out.println("最小化");
     }
 
     /**
      * 最小化窗口
+     *
      * @param event
      */
-    public  void scaleWindow(ActionEvent event){
-        if(isMinWindow){
+    public void scaleWindow(ActionEvent event) {
+        if (isMinWindow) {
             myController.getStage(Constant.rootViewID).setMaximized(true);
-        }else {
+        } else {
 //            myController.getStage(Constant.rootViewID)
         }
         System.out.println("最大化");
