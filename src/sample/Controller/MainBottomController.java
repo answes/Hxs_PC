@@ -13,6 +13,7 @@ import javafx.scene.control.TreeView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.web.WebEngine;
+import sample.bean.Commodity;
 import sample.util.AppDatas;
 
 import java.io.IOException;
@@ -40,6 +41,11 @@ public class MainBottomController implements Initializable {
     private BorderPane view_root;
     private boolean isKLine;
     private TranstationController transtationController;
+
+
+    public void setTableViewOneClick(Commodity commodity){
+        transtationController.setTableViewOneClick(commodity);
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

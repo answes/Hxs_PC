@@ -20,14 +20,14 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.web.WebView?>
 
-<AnchorPane fx:id="mian_root" prefHeight="-Infinity" prefWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.MainController">
+<AnchorPane fx:id="mian_root" prefHeight="-Infinity" prefWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" >
     <VBox>
         <Pane fx:id="titlebarl" prefHeight="60.0" prefWidth="-Infinity">
             <children>
                 <ImageView fx:id="logo" fitHeight="90.0" fitWidth="215.0" layoutY="-9.0" pickOnBounds="true" preserveRatio="true" />
                 <Pane fx:id="titleMove" layoutX="463.0" prefHeight="36.0" prefWidth="637.0">
                     <children>
-                        <Button layoutX="609.0" mnemonicParsing="false" onAction="#close" text="X" />
+                        <Button layoutX="609.0" mnemonicParsing="false" text="X" />
                     </children></Pane>
                 <Label fx:id="titleName" layoutX="239.0" layoutY="5.0" prefHeight="15.0" prefWidth="185.0" text="海香所商品交易中心交易系统" textFill="#f5f4f4">
                     <font>

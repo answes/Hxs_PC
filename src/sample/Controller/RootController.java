@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -57,6 +58,7 @@ public class RootController implements ControlledStage, Initializable {
     private boolean isKLine;
 
     private boolean isMinWindow;
+    private MainBottomController mainBottomController;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -78,7 +80,8 @@ public class RootController implements ControlledStage, Initializable {
         try {
             loader = fxmlLoader.load();
             bottom_root.getChildren().add(loader);
-            ((MainBottomController)fxmlLoader.getController()).initDate(webEngine,isKLine,view_root);
+            mainBottomController =   (fxmlLoader.getController());
+            mainBottomController.initDate(webEngine,isKLine,view_root);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -275,18 +278,43 @@ public class RootController implements ControlledStage, Initializable {
         tb_goods.getColumns().setAll(number, commNum, commName, openPrice, newPrice,
                 count, upDown, extent, maxPrice, mixPrice, yestedayPrice, comePrice, comeNumber, outPrice,
                 outNumber, overNumber, overMoney, avgPrice, stockNumber, numberScale, trustScale, exchangeScale);
-        tb_goods.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                //双击事件，进去图标详情
-                if (event.getClickCount() == 2) {
-                    kView.setVisible(true);
-                    tb_goods.setVisible(false);
-                    isKLine = true;
-                    webEngine.load(getClass().getResource("../html/kLine.html").toExternalForm());
+        tb_goods.setRowFactory( tv -> {
+            TableRow<Commodity> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if(! row.isEmpty() && event.getButton() == MouseButton.PRIMARY ){
+                    Commodity commodity = row.getItem();
+                    if(event.getClickCount() == 2){
+                        setRowOnTwoClick(commodity);
+                    }else if(event.getClickCount() == 1){
+                        setRowOnOneClick(commodity);
+                    }
+
                 }
-            }
+            });
+            return  row;
         });
+
+    }
+
+
+    /**
+     * 单击设置数据到买入，卖出中
+     * @param commodity
+     */
+    @FXML
+    private void setRowOnOneClick(Commodity commodity) {
+        mainBottomController.setTableViewOneClick(commodity);
+    }
+
+    /**
+     * 双击进入分时图
+     * @param commodity
+     */
+    @FXML
+    private void setRowOnTwoClick(Commodity commodity) {
+        kView.setVisible(true);
+        tb_goods.setVisible(false);
+        webEngine.load(getClass().getResource("../html/trend.html").toExternalForm());
     }
 
     private void onClick() {
