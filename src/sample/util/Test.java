@@ -5,7 +5,7 @@ public class Test {
 
     public static void main(String[] arg){
         StringBuffer stringBuffer = new StringBuffer();
-        for(int i=9;i<24 ;i++){
+        for(int i=9;i<18 ;i++){
             for(int j=0;j<60 ;j++){
                 stringBuffer.append("'"+i+":"+j+"',");
             }

@@ -1,34 +1,39 @@
 package sample.Controller;
 
 import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.fxml.JavaFXBuilderFactory;
+import javafx.scene.Group;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
-import sample.bean.ComeMsg;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import sample.bean.Commodity;
-import sample.util.AppDatas;
 import sample.util.Constant;
 import sample.util.ControlledStage;
 import sample.util.StageController;
 
+
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 /**
@@ -43,8 +48,16 @@ public class RootController implements ControlledStage, Initializable {
     private WebView web;//k线图
     @FXML
     private AnchorPane kView;
-
-
+    @FXML
+    private ImageView quotesBt;
+    @FXML
+    private ImageView chartAnalysis;
+    @FXML
+    private ImageView productInformation;
+    @FXML
+    private ImageView dealDetails;
+    @FXML
+    private ImageView systemSet;
     @FXML
     private AnchorPane bottom_root;
     @FXML
@@ -55,9 +68,9 @@ public class RootController implements ControlledStage, Initializable {
 
     private WebEngine webEngine;
 
-    private boolean isKLine;
+    private SimpleBooleanProperty isKLine = new SimpleBooleanProperty(false);
 
-    private boolean isMinWindow;
+    private SimpleBooleanProperty isMinWindow = new SimpleBooleanProperty(false);
     private MainBottomController mainBottomController;
 
     @Override
@@ -70,8 +83,20 @@ public class RootController implements ControlledStage, Initializable {
 
     private void initData() {
         initGoodTable();
+        initImage();
         initTranstasionTable();
         initBottom();
+    }
+
+    /**
+     * 初始化图标控件
+     */
+    private void initImage() {
+        quotesBt.setImage(new Image(getClass().getResource("../image/list.png").toExternalForm()));
+        chartAnalysis.setImage(new Image(getClass().getResource("../image/fenxi.png").toExternalForm()));
+        productInformation.setImage(new Image(getClass().getResource("../image/file.png").toExternalForm()));
+        dealDetails.setImage(new Image(getClass().getResource("../image/details.png").toExternalForm()));
+        systemSet.setImage(new Image(getClass().getResource("../image/seting.png").toExternalForm()));
     }
 
     private void initBottom() {
@@ -79,13 +104,17 @@ public class RootController implements ControlledStage, Initializable {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/main_bottom.fxml"));
         try {
             loader = fxmlLoader.load();
+            //这个是我把获取MainBottomController添加到这个Controller的底下布局，你不用管
             bottom_root.getChildren().add(loader);
-            mainBottomController =   (fxmlLoader.getController());
-            mainBottomController.initDate(webEngine,isKLine,view_root);
+            //获取MainBottomController
+            mainBottomController =   fxmlLoader.getController();
+            //执行获取MainBottomController更新的方法,以后tableview 点击的时候就可以调用这个方法来更新第二个Controller的数据了
+            mainBottomController.initDate(webEngine,isKLine.getValue(),view_root);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 
     /**
      * 初始化交易详情列表
@@ -325,7 +354,7 @@ public class RootController implements ControlledStage, Initializable {
 
     public void toTranstion(ActionEvent e) {
         view_root.setBottom(bottom_root);
-        if (isKLine) {
+        if (isKLine.getValue()) {
             //webEngine.load(getClass().getResource("../html/kLine.html").toExternalForm());
             webEngine.reload();
         }
@@ -340,7 +369,7 @@ public class RootController implements ControlledStage, Initializable {
     public void fenshiKLine(ActionEvent event) {
         kView.setVisible(true);
         tb_goods.setVisible(false);
-        isKLine = true;
+        isKLine.setValue(true);
         webEngine.load(getClass().getResource("../html/trend.html").toExternalForm());
     }
 
@@ -426,6 +455,77 @@ public class RootController implements ControlledStage, Initializable {
     }
 
     /**
+     * 列表
+     * @param event
+     */
+    public void homeClick(MouseEvent event){
+        kView.setVisible(false);
+        isKLine.setValue(false);
+        tb_goods.setVisible(true);
+    }
+
+    /**
+     * K线查看
+     * @param event
+     */
+    public void kLineClick(MouseEvent event){
+        kView.setVisible(false);
+        tb_goods.setVisible(true);
+        isKLine.setValue(true);
+        webEngine.load(getClass().getResource("../html/kline.html").toExternalForm());
+    }
+
+    /**
+     * 商品详情
+     * @param event
+     */
+    public void productInformation(MouseEvent event){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/product.fxml"));
+        try {
+            Pane tempPane = loader.load();
+            Scene scene = new Scene(tempPane,900,700); Stage dialog = new Stage();
+            dialog.initStyle(StageStyle.UTILITY);
+            dialog.setScene(scene);
+            dialog.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    /**
+     * 设置
+     * @param event
+     */
+    public void setIng (MouseEvent event){
+
+        List<String> choices = new ArrayList<>();
+        choices.add("清空");
+        choices.add("不清空");
+        choices.add("c");
+
+        ChoiceDialog<String> dialog = new ChoiceDialog<>("不清空", choices);
+        dialog.setTitle("系统设置");
+        dialog.setContentText("委托后界面设置:");
+
+        Optional<String> result = dialog.showAndWait();
+        if (result.isPresent()){
+            System.out.println("Your choice: " + result.get());
+        }
+
+        result.ifPresent(letter -> System.out.println("Your choice: " + letter));
+
+    }
+
+    /**
+     *
+     * @param event
+     */
+    public  void dealDetails(MouseEvent event){
+
+    }
+
+    /**
      * 关闭应用
      *
      * @param event
@@ -450,7 +550,7 @@ public class RootController implements ControlledStage, Initializable {
      * @param event
      */
     public void scaleWindow(ActionEvent event) {
-        if (isMinWindow) {
+        if (isMinWindow.getValue()) {
             myController.getStage(Constant.rootViewID).setMaximized(true);
         } else {
 //            myController.getStage(Constant.rootViewID)

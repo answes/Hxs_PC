@@ -4,196 +4,280 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.TreeView?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.web.WebView?>
 
-<BorderPane fx:id="view_root" maxHeight="Infinity" maxWidth="Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="1000.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.112"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.RootController">
+<?import javafx.scene.control.ListView?>
+<BorderPane fx:id="view_root" maxHeight="Infinity" maxWidth="Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.RootController">
 
     <stylesheets>
-        <URL value="@../css/main.css"/>
+        <URL value="@../css/main.css" />
     </stylesheets>
     <top>
         <AnchorPane fx:id="top_root" prefHeight="80.0" prefWidth="1200" BorderPane.alignment="CENTER">
-            <ImageView AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0"/>
+            <ImageView AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
 
-            <VBox AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="10.0"
-                  spacing="11.0">
-                <Label fx:id="logo_tiele" text="海香所交易所交易中心" prefWidth="200.0"/>
-                <Label fx:id="logo_second_title" text="客服热线： 400-900-283" prefWidth="200.0"/>
+            <VBox spacing="11.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="10.0">
+                <Label fx:id="logo_tiele" prefWidth="200.0" text="海香所交易所交易中心" />
+                <Label fx:id="logo_second_title" prefWidth="200.0" text="客服热线： 400-900-283" />
             </VBox>
-            <Label fx:id="lb_move" prefHeight="30.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0"
-                   AnchorPane.topAnchor="0.0"/>
+            <Label fx:id="lb_move" prefHeight="30.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="0.0" />
             <HBox AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                <Button fx:id="bt_top_system" text="系统"/>
+                <Button fx:id="bt_top_system" text="系统" />
                 <Button fx:id="bt_top_zijin" text="资金">
                     <HBox.margin>
-                        <Insets left="15.0" right="15.0"/>
+                        <Insets left="15.0" right="15.0" />
                     </HBox.margin>
                 </Button>
-                <Button fx:id="bt_top_util" text="工具"/>
+                <Button fx:id="bt_top_util" text="工具" />
                 <Button fx:id="bt_scale" onAction="#zoomWindow" text="一">
                     <HBox.margin>
-                        <Insets left="50.0"/>
+                        <Insets left="50.0" />
                     </HBox.margin>
                 </Button>
-                <Button fx:id="bt_zoom" onAction="#scaleWindow" text="口"/>
-                <Button fx:id="bt_close" onAction="#closeWindow" text="X"/>
+                <Button fx:id="bt_zoom" onAction="#scaleWindow" text="口" />
+                <Button fx:id="bt_close" onAction="#closeWindow" text="X" />
             </HBox>
         </AnchorPane>
     </top>
     <center>
         <AnchorPane fx:id="center_root" prefHeight="500.0" prefWidth="Infinity" BorderPane.alignment="CENTER">
-            <Separator prefHeight="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"
-                       AnchorPane.leftAnchor="0.0"/>
-            <AnchorPane prefHeight="25.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0"
-                        AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="1.0">
+            <Separator prefHeight="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <AnchorPane prefHeight="25.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="1.0">
                 <HBox spacing="4">
-                    <Button fx:id="fenshi" onAction="#fenshiKLine" mnemonicParsing="false" text="分时"/>
-                    <Button fx:id="oneMinute" onAction="#oneMinuteKLine" mnemonicParsing="false" text="1分"/>
-                    <Button fx:id="fiveMinute" onAction="#fiveMinuteKLine" mnemonicParsing="false" text="5分"/>
-                    <Button fx:id="tenMinute" onAction="#tenMinuteKLine" mnemonicParsing="false" text="10分"/>
-                    <Button fx:id="fifteenMinute" onAction="#fifteenMinuteKLine" mnemonicParsing="false" text="15分"/>
-                    <Button fx:id="thrityMinute" onAction="#thrityMinuteKLine" mnemonicParsing="false" text="30分"/>
-                    <Button fx:id="sixtyMinute" onAction="#sixtyMinuteKLine" mnemonicParsing="false" text="60分"/>
-                    <Button fx:id="day" onAction="#dayKLine" mnemonicParsing="false" text="日"/>
-                    <Button fx:id="week" onAction="#weekKLine" mnemonicParsing="false" text="周"/>
-                    <Button fx:id="month" onAction="#monthKLine" mnemonicParsing="false" text="月"/>
-                    <!--<ImageView fx:id="quotesBt" fitHeight="23.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true" />-->
-                    <!--<ImageView fx:id="chartAnalysis" fitHeight="25.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true" />-->
-                    <!--<ImageView fx:id="productInformation" fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />-->
-                    <!--<ImageView fx:id="dealDetails" fitHeight="24.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" />-->
-                    <!--<ImageView fx:id="systemSet" fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true" />-->
+                    <Button fx:id="fenshi" mnemonicParsing="false" onAction="#fenshiKLine" text="分时" />
+                    <Button fx:id="oneMinute" mnemonicParsing="false" onAction="#oneMinuteKLine" text="1分" />
+                    <Button fx:id="fiveMinute" mnemonicParsing="false" onAction="#fiveMinuteKLine" text="5分" />
+                    <Button fx:id="tenMinute" mnemonicParsing="false" onAction="#tenMinuteKLine" text="10分" />
+                    <Button fx:id="fifteenMinute" mnemonicParsing="false" onAction="#fifteenMinuteKLine" text="15分" />
+                    <Button fx:id="thrityMinute" mnemonicParsing="false" onAction="#thrityMinuteKLine" text="30分" />
+                    <Button fx:id="sixtyMinute" mnemonicParsing="false" onAction="#sixtyMinuteKLine" text="60分" />
+                    <Button fx:id="day" mnemonicParsing="false" onAction="#dayKLine" text="日" />
+                    <Button fx:id="week" mnemonicParsing="false" onAction="#weekKLine" text="周" />
+                    <Button fx:id="month" mnemonicParsing="false" onAction="#monthKLine" text="月" />
+                    <ImageView fx:id="quotesBt" fitHeight="23.0" fitWidth="26.0" onMouseClicked="#homeClick" pickOnBounds="true" preserveRatio="true" />
+                    <ImageView fx:id="chartAnalysis" fitHeight="25.0" fitWidth="23.0" onMouseClicked="#kLineClick" pickOnBounds="true" preserveRatio="true" />
+                    <ImageView fx:id="productInformation" fitHeight="24.0" fitWidth="24.0" onMouseClicked="#productInformation" pickOnBounds="true" preserveRatio="true" />
+                    <ImageView fx:id="dealDetails" fitHeight="24.0" fitWidth="27.0" onMouseClicked="#dealDetails" pickOnBounds="true" preserveRatio="true" />
+                    <ImageView fx:id="systemSet" fitHeight="26.0" fitWidth="26.0" onMouseClicked="#setIng" pickOnBounds="true" preserveRatio="true" />
                 </HBox>
-                <Button fx:id="to_transaction" onAction="#toTranstion" text="进入交易" AnchorPane.rightAnchor="10.0"/>
+                <Button fx:id="to_transaction" onAction="#toTranstion" text="进入交易" AnchorPane.rightAnchor="10.0" />
             </AnchorPane>
-            <AnchorPane fx:id="kView" prefHeight="450.0" prefWidth="1200.0" visible="false"
-                        AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-                        AnchorPane.topAnchor="25.0">
-                <WebView fx:id="web" prefHeight="450.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0"
-                         AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="0.0"/>
-                <VBox prefWidth="200.0" spacing="6" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0"
-                      AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="kView" prefHeight="450.0" prefWidth="1200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+                <WebView fx:id="web" prefHeight="450.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="0.0" />
+                <VBox prefWidth="200.0" spacing="6" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <HBox prefWidth="200.0" spacing="60">
+                        <HBox>
+                            <Label text="委比"/>
+                            <Label text="0.02"/>
+                        </HBox>
+                        <HBox>
+                            <Label text="委差"/>
+                            <Label text="0.02"/>
+                        </HBox>
+                    </HBox>
                     <HBox prefWidth="200.0" spacing="60">
                         <Label text="卖五">
                             <HBox.margin>
-                                <Insets left="10.0"/>
+                                <Insets left="10.0" />
                             </HBox.margin>
                         </Label>
-                        <Label text="219"/>
-                        <Label text="50"/>
+                        <Label text="219" />
+                        <Label text="50" />
                         <VBox.margin>
-                            <Insets top="20.0"/>
+                            <Insets top="20.0" />
                         </VBox.margin>
                     </HBox>
                     <HBox prefWidth="200.0" spacing="60">
                         <Label text="卖四">
                             <HBox.margin>
-                                <Insets left="10.0"/>
+                                <Insets left="10.0" />
                             </HBox.margin>
                         </Label>
-                        <Label text="219"/>
-                        <Label text="50"/>
+                        <Label text="219" />
+                        <Label text="50" />
 
                     </HBox>
                     <HBox prefWidth="200.0" spacing="60">
                         <Label text="卖三">
                             <HBox.margin>
-                                <Insets left="10.0"/>
+                                <Insets left="10.0" />
                             </HBox.margin>
                         </Label>
-                        <Label text="219"/>
-                        <Label text="50"/>
+                        <Label text="219" />
+                        <Label text="50" />
 
                     </HBox>
                     <HBox prefWidth="200.0" spacing="60">
                         <Label text="卖二">
                             <HBox.margin>
-                                <Insets left="10.0"/>
+                                <Insets left="10.0" />
                             </HBox.margin>
                         </Label>
-                        <Label text="219"/>
-                        <Label text="50"/>
+                        <Label text="219" />
+                        <Label text="50" />
 
                     </HBox>
                     <HBox prefWidth="200.0" spacing="60">
                         <Label text="卖一">
                             <HBox.margin>
-                                <Insets left="10.0"/>
+                                <Insets left="10.0" />
                             </HBox.margin>
                         </Label>
-                        <Label text="219"/>
-                        <Label text="50"/>
+                        <Label text="219" />
+                        <Label text="50" />
                     </HBox>
-                    <Separator/>
+                    <Separator />
                     <HBox prefWidth="200.0" spacing="60">
                         <Label text="买一">
                             <HBox.margin>
-                                <Insets left="10.0"/>
+                                <Insets left="10.0" />
                             </HBox.margin>
                         </Label>
-                        <Label text="219"/>
-                        <Label text="50"/>
+                        <Label text="219" />
+                        <Label text="50" />
                     </HBox>
                     <HBox prefWidth="200.0" spacing="60">
                         <Label text="买二">
                             <HBox.margin>
-                                <Insets left="10.0"/>
+                                <Insets left="10.0" />
                             </HBox.margin>
                         </Label>
-                        <Label text="219"/>
-                        <Label text="50"/>
+                        <Label text="219" />
+                        <Label text="50" />
 
                     </HBox>
                     <HBox prefWidth="200.0" spacing="60">
                         <Label text="买三">
                             <HBox.margin>
-                                <Insets left="10.0"/>
+                                <Insets left="10.0" />
                             </HBox.margin>
                         </Label>
-                        <Label text="219"/>
-                        <Label text="50"/>
+                        <Label text="219" />
+                        <Label text="50" />
 
                     </HBox>
                     <HBox prefWidth="200.0" spacing="60">
                         <Label text="买四">
                             <HBox.margin>
-                                <Insets left="10.0"/>
+                                <Insets left="10.0" />
                             </HBox.margin>
                         </Label>
-                        <Label text="219"/>
-                        <Label text="50"/>
+                        <Label text="219" />
+                        <Label text="50" />
 
                     </HBox>
                     <HBox prefWidth="200.0" spacing="60">
                         <Label text="买五">
                             <HBox.margin>
-                                <Insets left="10.0"/>
+                                <Insets left="10.0" />
                             </HBox.margin>
                         </Label>
-                        <Label text="219"/>
-                        <Label text="50"/>
-
+                        <Label text="219" />
+                        <Label text="50" />
                     </HBox>
+
+                    <HBox prefWidth="200.0" spacing="60">
+                        <HBox>
+                            <Label text="最新价"/>
+                            <Label text="0.02"/>
+                        </HBox>
+                        <HBox>
+                            <Label text="均价"/>
+                            <Label text="0.02"/>
+                        </HBox>
+                    </HBox>
+                    <HBox prefWidth="200.0" spacing="60">
+                        <HBox>
+                            <Label text="涨跌"/>
+                            <Label text="0.02"/>
+                        </HBox>
+                        <HBox>
+                            <Label text="开盘价"/>
+                            <Label text="0.02"/>
+                        </HBox>
+                    </HBox>
+                    <HBox prefWidth="200.0" spacing="60">
+                        <HBox>
+                            <Label text="幅度"/>
+                            <Label text="0.02"/>
+                        </HBox>
+                        <HBox>
+                            <Label text="最高价"/>
+                            <Label text="0.02"/>
+                        </HBox>
+                    </HBox>
+                    <HBox prefWidth="200.0" spacing="60">
+                        <HBox>
+                            <Label text="现量"/>
+                            <Label text="0.02"/>
+                        </HBox>
+                        <HBox>
+                            <Label text="最低价"/>
+                            <Label text="0.02"/>
+                        </HBox>
+                    </HBox>
+                    <HBox prefWidth="200.0" spacing="60">
+                        <HBox>
+                            <Label text="总量"/>
+                            <Label text="0.02"/>
+                        </HBox>
+                        <HBox>
+                            <Label text="量比"/>
+                            <Label text="0.02"/>
+                        </HBox>
+                    </HBox>
+                    <HBox prefWidth="200.0" spacing="60">
+                        <HBox>
+                            <Label text="成交额"/>
+                            <Label text="0.02"/>
+                        </HBox>
+                        <HBox>
+                            <Label text="还手率"/>
+                            <Label text="0.02"/>
+                        </HBox>
+                    </HBox>
+                    <HBox prefWidth="200.0" spacing="60">
+                        <HBox>
+                            <Label text="昨收"/>
+                            <Label text="0.02"/>
+                        </HBox>
+                    </HBox>
+                    <HBox prefWidth="200.0" spacing="60">
+                        <HBox>
+                            <Label text="内盘"/>
+                            <Label text="0.02"/>
+                        </HBox>
+                        <HBox>
+                            <Label text="外盘"/>
+                            <Label text="0.02"/>
+                        </HBox>
+                    </HBox>
+
                 </VBox>
             </AnchorPane>
-            <TableView fx:id="tb_goods" prefHeight="450.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0"
-                       AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0"/>
+            <AnchorPane fx:id="listView" prefHeight="450.0" prefWidth="1200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+                <Label fx:id="lb_list_title" prefWidth="1200.0" style="-fx-font-fill: #25B3FA" text="木棉唐" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                <GridPane prefHeight="450.0" prefWidth="1200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0" AnchorPane.bottomAnchor="0.0">
+                    <ListView fx:id="lv_list1" prefHeight="450.0" prefWidth="300.0" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                    <ListView fx:id="lv_list2" prefHeight="450.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                    <ListView fx:id="lv_list3" prefHeight="450.0" prefWidth="300.0" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+                    <ListView fx:id="lv_list4" prefHeight="450.0" prefWidth="300.0" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+               </GridPane>
+            </AnchorPane>
+            <TableView fx:id="tb_goods" prefHeight="450.0" prefWidth="1200.0" visible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0" />
         </AnchorPane>
     </center>
     <bottom>
-        <AnchorPane fx:id="bottom_root" BorderPane.alignment="CENTER"/>
+        <AnchorPane fx:id="bottom_root" BorderPane.alignment="CENTER" />
     </bottom>
 </BorderPane>

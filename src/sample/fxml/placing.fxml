@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="sample.Controller.PlacingController"
+            prefHeight="400.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="176.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+    <VBox prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: aquamarine" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <Label text="配售" />
+        <HBox> <Label text="配售单号" /><TextField disable="false" /></HBox>
+        <HBox>
+            <Label text="商品代码" />
+            <TextField disable="false" />
+        </HBox>
+        <HBox>
+            <Label text="商品名称" />
+            <TextField disable="true" />
+        </HBox>
+        <HBox>
+            <Label text="配售价格" />
+            <TextField disable="false" />
+        </HBox>
+        <HBox>
+            <Label text="预配售数量" />
+            <TextField disable="true" />
+        </HBox>
+
+        <HBox>
+            <Label text="配售数量" />
+            <TextField disable="false" />
+        </HBox>
+        <HBox><CheckBox /> <Label text="阅读《协议配售书》" /></HBox>
+
+        <Button text="提交" />
+    </VBox>
+    <TableView
+            AnchorPane.leftAnchor="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" AnchorPane.rightAnchor="0.0"/>
+</AnchorPane>

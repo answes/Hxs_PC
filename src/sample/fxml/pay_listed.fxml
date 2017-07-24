@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="sample.Controller.PayListedController"
+            prefHeight="400.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="176.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+    <VBox prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: aquamarine" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <Label text="支付挂牌费" />
+        <HBox> <Label text="商品代码" /> <ChoiceBox prefHeight="23.0" prefWidth="161.0" /></HBox>
+        <HBox>
+            <Label text="商品名称" />
+            <TextField disable="false" />
+        </HBox>
+        <HBox>
+            <Label text="申请数量" />
+            <TextField disable="false" />
+        </HBox>
+        <HBox>
+            <Label text="入库数量" />
+            <TextField disable="false" />
+        </HBox>
+        <HBox>
+            <Label text="应付挂牌费" />
+            <TextField disable="false" />
+        </HBox>
+        <Button text="提交" />
+        <Label text="注：挂牌费在托管审核后自动支付，入账户资金不足，需要充值后手工缴纳挂牌费及纳金"/>
+    </VBox>
+    <HBox AnchorPane.leftAnchor="300.0" AnchorPane.bottomAnchor="0.0"  style="-fx-background-color: #BDE8FF" AnchorPane.topAnchor="0.0" AnchorPane.rightAnchor="0.0" prefHeight="40.0" alignment="CENTER">
+       <Label text="商品代码" /> <ChoiceBox /> <Button text="查询"/>
+    </HBox>
+    <TableView
+            AnchorPane.leftAnchor="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="40.0" AnchorPane.rightAnchor="0.0"/>
+</AnchorPane>
