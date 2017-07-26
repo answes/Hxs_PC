@@ -16,4 +16,7 @@ public class ProductCotroller implements Initializable {
         WebEngine engine = web.getEngine();
         engine.load("https://baike.baidu.com/item/%E4%BA%BA%E5%8F%82/6226?fr=aladdin");
     }
+    public void init(){
+
+    }
 }

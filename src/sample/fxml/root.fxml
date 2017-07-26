@@ -4,6 +4,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.ImageView?>
@@ -16,7 +17,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.web.WebView?>
 
-<?import javafx.scene.control.ListView?>
 <BorderPane fx:id="view_root" maxHeight="Infinity" maxWidth="Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.RootController">
 
     <stylesheets>
@@ -77,12 +77,12 @@
                 <VBox prefWidth="200.0" spacing="6" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <HBox prefWidth="200.0" spacing="60">
                         <HBox>
-                            <Label text="委比"/>
-                            <Label text="0.02"/>
+                            <Label text="委比" />
+                            <Label text="0.02" />
                         </HBox>
                         <HBox>
-                            <Label text="委差"/>
-                            <Label text="0.02"/>
+                            <Label text="委差" />
+                            <Label text="0.02" />
                         </HBox>
                     </HBox>
                     <HBox prefWidth="200.0" spacing="60">
@@ -188,78 +188,78 @@
 
                     <HBox prefWidth="200.0" spacing="60">
                         <HBox>
-                            <Label text="最新价"/>
-                            <Label text="0.02"/>
+                            <Label text="最新价" />
+                            <Label text="0.02" />
                         </HBox>
                         <HBox>
-                            <Label text="均价"/>
-                            <Label text="0.02"/>
-                        </HBox>
-                    </HBox>
-                    <HBox prefWidth="200.0" spacing="60">
-                        <HBox>
-                            <Label text="涨跌"/>
-                            <Label text="0.02"/>
-                        </HBox>
-                        <HBox>
-                            <Label text="开盘价"/>
-                            <Label text="0.02"/>
+                            <Label text="均价" />
+                            <Label text="0.02" />
                         </HBox>
                     </HBox>
                     <HBox prefWidth="200.0" spacing="60">
                         <HBox>
-                            <Label text="幅度"/>
-                            <Label text="0.02"/>
+                            <Label text="涨跌" />
+                            <Label text="0.02" />
                         </HBox>
                         <HBox>
-                            <Label text="最高价"/>
-                            <Label text="0.02"/>
-                        </HBox>
-                    </HBox>
-                    <HBox prefWidth="200.0" spacing="60">
-                        <HBox>
-                            <Label text="现量"/>
-                            <Label text="0.02"/>
-                        </HBox>
-                        <HBox>
-                            <Label text="最低价"/>
-                            <Label text="0.02"/>
+                            <Label text="开盘价" />
+                            <Label text="0.02" />
                         </HBox>
                     </HBox>
                     <HBox prefWidth="200.0" spacing="60">
                         <HBox>
-                            <Label text="总量"/>
-                            <Label text="0.02"/>
+                            <Label text="幅度" />
+                            <Label text="0.02" />
                         </HBox>
                         <HBox>
-                            <Label text="量比"/>
-                            <Label text="0.02"/>
-                        </HBox>
-                    </HBox>
-                    <HBox prefWidth="200.0" spacing="60">
-                        <HBox>
-                            <Label text="成交额"/>
-                            <Label text="0.02"/>
-                        </HBox>
-                        <HBox>
-                            <Label text="还手率"/>
-                            <Label text="0.02"/>
+                            <Label text="最高价" />
+                            <Label text="0.02" />
                         </HBox>
                     </HBox>
                     <HBox prefWidth="200.0" spacing="60">
                         <HBox>
-                            <Label text="昨收"/>
-                            <Label text="0.02"/>
+                            <Label text="现量" />
+                            <Label text="0.02" />
+                        </HBox>
+                        <HBox>
+                            <Label text="最低价" />
+                            <Label text="0.02" />
                         </HBox>
                     </HBox>
                     <HBox prefWidth="200.0" spacing="60">
                         <HBox>
-                            <Label text="内盘"/>
-                            <Label text="0.02"/>
+                            <Label text="总量" />
+                            <Label text="0.02" />
                         </HBox>
                         <HBox>
-                            <Label text="外盘"/>
-                            <Label text="0.02"/>
+                            <Label text="量比" />
+                            <Label text="0.02" />
+                        </HBox>
+                    </HBox>
+                    <HBox prefWidth="200.0" spacing="60">
+                        <HBox>
+                            <Label text="成交额" />
+                            <Label text="0.02" />
+                        </HBox>
+                        <HBox>
+                            <Label text="还手率" />
+                            <Label text="0.02" />
+                        </HBox>
+                    </HBox>
+                    <HBox prefWidth="200.0" spacing="60">
+                        <HBox>
+                            <Label text="昨收" />
+                            <Label text="0.02" />
+                        </HBox>
+                    </HBox>
+                    <HBox prefWidth="200.0" spacing="60">
+                        <HBox>
+                            <Label text="内盘" />
+                            <Label text="0.02" />
+                        </HBox>
+                        <HBox>
+                            <Label text="外盘" />
+                            <Label text="0.02" />
                         </HBox>
                     </HBox>
 
@@ -267,11 +267,20 @@
             </AnchorPane>
             <AnchorPane fx:id="listView" prefHeight="450.0" prefWidth="1200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
                 <Label fx:id="lb_list_title" prefWidth="1200.0" style="-fx-font-fill: #25B3FA" text="木棉唐" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                <GridPane prefHeight="450.0" prefWidth="1200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0" AnchorPane.bottomAnchor="0.0">
-                    <ListView fx:id="lv_list1" prefHeight="450.0" prefWidth="300.0" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-                    <ListView fx:id="lv_list2" prefHeight="450.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
-                    <ListView fx:id="lv_list3" prefHeight="450.0" prefWidth="300.0" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
-                    <ListView fx:id="lv_list4" prefHeight="450.0" prefWidth="300.0" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+                <GridPane prefHeight="450.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
+                    <ListView fx:id="lv_list1" prefHeight="450.0" prefWidth="300.0" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                    <ListView fx:id="lv_list2" prefHeight="450.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                    <ListView fx:id="lv_list3" prefHeight="450.0" prefWidth="300.0" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                    <ListView fx:id="lv_list4" prefHeight="450.0" prefWidth="300.0" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+               <columnConstraints>
+                  <ColumnConstraints />
+                  <ColumnConstraints />
+                  <ColumnConstraints />
+                  <ColumnConstraints />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints />
+               </rowConstraints>
                </GridPane>
             </AnchorPane>
             <TableView fx:id="tb_goods" prefHeight="450.0" prefWidth="1200.0" visible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0" />

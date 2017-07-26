@@ -6,7 +6,8 @@
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="sample.Controller.ProductCotroller"
-            prefHeight="700.0" prefWidth="900.0">
+
+prefWidth="900.0" prefHeight="700.0">
     <WebView fx:id="web" AnchorPane.topAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"></WebView>
 
 </AnchorPane>

@@ -29,6 +29,8 @@ import sample.util.ControlledStage;
 import sample.util.StageController;
 
 
+import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -343,7 +345,7 @@ public class RootController implements ControlledStage, Initializable {
     private void setRowOnTwoClick(Commodity commodity) {
         kView.setVisible(true);
         tb_goods.setVisible(false);
-        webEngine.load(getClass().getResource("../html/trend.html").toExternalForm());
+        webEngine.load(getClass().getResource("../html/test.html").toExternalForm());
     }
 
     private void onClick() {
@@ -370,7 +372,7 @@ public class RootController implements ControlledStage, Initializable {
         kView.setVisible(true);
         tb_goods.setVisible(false);
         isKLine.setValue(true);
-        webEngine.load(getClass().getResource("../html/trend.html").toExternalForm());
+        webEngine.load(getClass().getResource("../html/test.html").toExternalForm());
     }
 
     /**
@@ -379,7 +381,9 @@ public class RootController implements ControlledStage, Initializable {
      * @param event
      */
     public void oneMinuteKLine(ActionEvent event) {
-
+        kView.setVisible(true);
+        tb_goods.setVisible(false);
+        webEngine.load(getClass().getResource("../html/test.html").toExternalForm());
     }
 
     /**
@@ -389,6 +393,9 @@ public class RootController implements ControlledStage, Initializable {
      */
     public void fiveMinuteKLine(ActionEvent event) {
 
+        kView.setVisible(true);
+        tb_goods.setVisible(false);
+        webEngine.load(" https://code.hcharts.cn/highstock/hhhhib/7");
     }
 
     /**
@@ -451,7 +458,6 @@ public class RootController implements ControlledStage, Initializable {
      * @param event
      */
     public void monthKLine(ActionEvent event) {
-
     }
 
     /**
@@ -469,10 +475,10 @@ public class RootController implements ControlledStage, Initializable {
      * @param event
      */
     public void kLineClick(MouseEvent event){
-        kView.setVisible(false);
-        tb_goods.setVisible(true);
+        tb_goods.setVisible(false);
+        kView.setVisible(true);
         isKLine.setValue(true);
-        webEngine.load(getClass().getResource("../html/kline.html").toExternalForm());
+        webEngine.load(getClass().getResource("../html/kLine.html").toExternalForm());
     }
 
     /**

@@ -6,7 +6,7 @@ package sample.util;
 
 public class AppDatas {
     public static final String TAB_TRANSTATION = "transtion";
-   public static final String TAB_SEND = "send";
+    public static final String TAB_SEND = "send";
     public static final String TAB_AUTO = "auto";
     public static final String TAB_SETTLEMENT= "settlement";
 

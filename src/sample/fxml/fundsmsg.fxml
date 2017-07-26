@@ -3,8 +3,6 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
-
-
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.DatePicker?>
@@ -12,17 +10,17 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.control.ListView?>
-<AnchorPane prefHeight="400.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="176.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.FundsMsgController">
+<AnchorPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.FundsMsgController">
    <children>
-      <TabPane prefHeight="400.0" prefWidth="1024.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <TabPane tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
           <Tab text="资金账户">
             <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="400.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" >
                         <GridPane AnchorPane.rightAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" >
-                            <ListView prefHeight="400.0" prefWidth="300.0" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-                            <ListView prefHeight="400.0" prefWidth="300.0" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
-                            <ListView prefHeight="400.0" prefWidth="300.0" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+                            <ListView fx:id="list1" prefHeight="400.0" prefWidth="300.0" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                            <ListView fx:id="list2" prefHeight="400.0" prefWidth="300.0" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                            <ListView fx:id="list3" prefHeight="400.0" prefWidth="300.0" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
                         </GridPane>
                 </AnchorPane>
             </content>
@@ -30,7 +28,7 @@
           <Tab text="资金流水">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="400.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" >
-                <HBox prefHeight="35.0" alignment="CENTER">
+                <HBox AnchorPane.leftAnchor="80.0" prefHeight="35.0" spacing="12" alignment="CENTER">
                     <Label text="开始日期"/>
                     <DatePicker />
                     <Label text="结束日期"/>
@@ -44,8 +42,8 @@
           </Tab>
             <Tab text="出入金">
                 <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="400.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" >
-                        <HBox prefHeight="35.0" alignment="CENTER">
+                    <AnchorPane  minHeight="0.0" minWidth="0.0" prefHeight="400.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" >
+                        <HBox AnchorPane.leftAnchor="80.0" spacing="12" prefHeight="35.0" alignment="CENTER">
                             <Label text="开始日期"/>
                             <DatePicker />
                             <Label text="结束日期"/>

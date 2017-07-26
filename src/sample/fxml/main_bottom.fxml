@@ -63,8 +63,7 @@
         </AnchorPane>
 
         <AnchorPane fx:id="bottom_details" style="-fx-background-color: cyan" AnchorPane.bottomAnchor="0.0"
-                    AnchorPane.leftAnchor="176.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0"/>
-
+                    AnchorPane.leftAnchor="176.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+        </AnchorPane>
     </AnchorPane>
-    <!--<fx:include source="main_transtation.fxml"/>-->
 </AnchorPane>

@@ -9,7 +9,7 @@
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="sample.Controller.HostedCotroller"
-            prefHeight="400.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="176.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+            AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
     <VBox prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: aquamarine" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
         <Label text="托管申请" />
         <HBox> <Label text="托管计划" /> <ChoiceBox prefHeight="23.0" prefWidth="161.0" /></HBox>
@@ -35,7 +35,7 @@
         </HBox>
         <Button text="提交" />
     </VBox>
-    <HBox AnchorPane.leftAnchor="300.0" AnchorPane.bottomAnchor="0.0"  style="-fx-background-color: #BDE8FF" AnchorPane.topAnchor="0.0" AnchorPane.rightAnchor="0.0" prefHeight="40.0" alignment="CENTER">
+    <HBox AnchorPane.leftAnchor="300.0" AnchorPane.bottomAnchor="0.0"  style="-fx-background-color: #BDE8FF" AnchorPane.topAnchor="0.0" AnchorPane.rightAnchor="0.0" prefHeight="30.0" alignment="CENTER">
        <Label text="商品代码" /> <ChoiceBox /> <Button text="查询"/>
     </HBox>
     <TableView

@@ -13,4 +13,7 @@ public class PickUpController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
     }
+    public void init(){
+
+    }
 }

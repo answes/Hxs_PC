@@ -22,9 +22,26 @@ public class TranstationController implements Initializable {
     private TextField tf_buy_price;
     @FXML
     private TextField tf_can_butnum;
+    @FXML
+    private Label lb_byy_price;
+    @FXML
+    private Label lb_can_buy;
 
-    public void initData(String transcationTitle){
-        setType(transcationTitle);
+    /**
+     *
+     * @param type 1 买入  2卖出
+     * @param transcationTitle
+     */
+    public void initData(int type,String transcationTitle){
+        if(type == 1){
+            lb_byy_price.setText("买入价格");
+            lb_can_buy.setText("可买数量");
+            lb_transcation_title.setText("买入商品");
+        }else{
+            lb_byy_price.setText("卖出价格");
+            lb_can_buy.setText("可卖数量");
+            lb_transcation_title.setText("卖出商品 ");
+        }
     }
 
     public void setTableViewOneClick(Commodity commodity){
@@ -39,54 +56,4 @@ public class TranstationController implements Initializable {
 
     }
 
-    public void setType(String type) {
-        switch (type){
-            case "买入":
-                lb_transcation_title.setText("买入商品");
-                break;
-            case "卖出":
-                lb_transcation_title.setText("卖出商品 ");
-                break;
-            case "撤单":
-                break;
-            case "预埋单":
-                break;
-            case "资金信息":
-                break;
-            case "委托查询":
-                break;
-            case "成交查询":
-                break;
-            case "持仓汇总":
-                break;
-            case "持仓明细":
-                break;
-            case "系统公告":
-                break;
-            case "申购":
-                break;
-            case "确认配售":
-                break;
-            case "申购记录":
-                break;
-            case "已成交申购":
-                break;
-            case "配售查询":
-                break;
-            case "托管申请":
-                break;
-            case "托管申请查询":
-                break;
-            case "支付挂牌费":
-                break;
-            case "提货申请":
-                break;
-            case "自提打印":
-                break;
-            case "撤销提货":
-                break;
-            case "提货查询":
-                break;
-        }
-    }
 }

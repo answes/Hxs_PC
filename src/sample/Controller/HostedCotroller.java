@@ -13,4 +13,7 @@ public class HostedCotroller implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
 
     }
+    public void init(){
+
+    }
 }

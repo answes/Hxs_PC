@@ -22,11 +22,6 @@ public class Main extends Application {
         stageController.setStage(Constant.loginViewID);
     }
 
-    @Override
-    public void stop() throws Exception {
-        super.stop();
-        //移除eventBus
-    }
 
     public static void main(String[] args) {
         launch(args);
