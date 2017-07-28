@@ -345,7 +345,7 @@ public class RootController implements ControlledStage, Initializable {
     private void setRowOnTwoClick(Commodity commodity) {
         kView.setVisible(true);
         tb_goods.setVisible(false);
-        webEngine.load(getClass().getResource("../html/test.html").toExternalForm());
+        webEngine.load(getClass().getResource("../html/fenshi.html").toExternalForm());
     }
 
     private void onClick() {
@@ -372,7 +372,7 @@ public class RootController implements ControlledStage, Initializable {
         kView.setVisible(true);
         tb_goods.setVisible(false);
         isKLine.setValue(true);
-        webEngine.load(getClass().getResource("../html/test.html").toExternalForm());
+        webEngine.load(getClass().getResource("../html/fenshi.html").toExternalForm());
     }
 
     /**
@@ -383,7 +383,7 @@ public class RootController implements ControlledStage, Initializable {
     public void oneMinuteKLine(ActionEvent event) {
         kView.setVisible(true);
         tb_goods.setVisible(false);
-        webEngine.load(getClass().getResource("../html/test.html").toExternalForm());
+        webEngine.load(getClass().getResource("../html/highstockTest.html").toExternalForm());
     }
 
     /**
@@ -395,7 +395,7 @@ public class RootController implements ControlledStage, Initializable {
 
         kView.setVisible(true);
         tb_goods.setVisible(false);
-        webEngine.load(" https://code.hcharts.cn/highstock/hhhhib/7");
+        webEngine.load(getClass().getResource("../html/highstockTest.html").toExternalForm());
     }
 
     /**
@@ -404,7 +404,9 @@ public class RootController implements ControlledStage, Initializable {
      * @param event
      */
     public void tenMinuteKLine(ActionEvent event) {
-
+        kView.setVisible(true);
+        tb_goods.setVisible(false);
+        webEngine.load(getClass().getResource("../html/highstockTest.html").toExternalForm());
     }
 
     /**
@@ -413,7 +415,9 @@ public class RootController implements ControlledStage, Initializable {
      * @param event
      */
     public void fifteenMinuteKLine(ActionEvent event) {
-
+        kView.setVisible(true);
+        tb_goods.setVisible(false);
+        webEngine.load(getClass().getResource("../html/highstockTest.html").toExternalForm());
     }
 
     /**
@@ -422,8 +426,11 @@ public class RootController implements ControlledStage, Initializable {
      * @param event
      */
     public void thrityMinuteKLine(ActionEvent event) {
-
+        kView.setVisible(true);
+        tb_goods.setVisible(false);
+        webEngine.load(getClass().getResource("../html/highstockTest.html").toExternalForm());
     }
+
 
     /**
      * 六十分K线
@@ -431,7 +438,9 @@ public class RootController implements ControlledStage, Initializable {
      * @param event
      */
     public void sixtyMinuteKLine(ActionEvent event) {
-
+        kView.setVisible(true);
+        tb_goods.setVisible(false);
+        webEngine.load(getClass().getResource("../html/highstockTest.html").toExternalForm());
     }
 
     /**
@@ -440,7 +449,9 @@ public class RootController implements ControlledStage, Initializable {
      * @param event
      */
     public void dayKLine(ActionEvent event) {
-
+        kView.setVisible(true);
+        tb_goods.setVisible(false);
+        webEngine.load(getClass().getResource("../html/highstockTest.html").toExternalForm());
     }
 
     /**
@@ -449,7 +460,9 @@ public class RootController implements ControlledStage, Initializable {
      * @param event
      */
     public void weekKLine(ActionEvent event) {
-
+        kView.setVisible(true);
+        tb_goods.setVisible(false);
+        webEngine.load(getClass().getResource("../html/highstockTest.html").toExternalForm());
     }
 
     /**
@@ -458,6 +471,9 @@ public class RootController implements ControlledStage, Initializable {
      * @param event
      */
     public void monthKLine(ActionEvent event) {
+        kView.setVisible(true);
+        tb_goods.setVisible(false);
+        webEngine.load(getClass().getResource("../html/highstockTest.html").toExternalForm());
     }
 
     /**
@@ -478,7 +494,7 @@ public class RootController implements ControlledStage, Initializable {
         tb_goods.setVisible(false);
         kView.setVisible(true);
         isKLine.setValue(true);
-        webEngine.load(getClass().getResource("../html/kLine.html").toExternalForm());
+        webEngine.load(getClass().getResource("../html/highstockTest.html").toExternalForm());
     }
 
     /**
