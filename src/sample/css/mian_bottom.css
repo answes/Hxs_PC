@@ -235,12 +235,13 @@
 #bt_mix:hover{
     -fx-background-color: linear-gradient(#2A5058, #61a2b1);
 }
-#bt_lock  {
+#bt_lock{
     -fx-text-fill: white;
     -fx-font-family: "Arial Narrow";
     -fx-background-color: #00000000;
+
 }
-#bt_lock {
+#bt_lock:hover{
     -fx-background-color: linear-gradient(#2A5058, #61a2b1);
 }
 #lb_bottom_title{

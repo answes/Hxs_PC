@@ -53,7 +53,6 @@ public class MainBottomController implements Initializable {
     private PlacingController placingController;//配售
     private PositionController positionController;//持仓
     private PrintOrderController printOrderController;//自提打印
-//    private ProductCotroller productCotroller;//
     private AdvBuyController advBuyController;//预埋单
     private PurchaseController purchaseController;//申购
     private SystemMsgController systemMsgController;//系统公告
@@ -71,6 +70,14 @@ public class MainBottomController implements Initializable {
         init();
         hideController();
         showController(Constant.TRASTATION);
+    }
+
+    /**
+     * 设置是否点进了k线图
+     * @param isKLine
+     */
+    public void setIsKLine(boolean isKLine){
+        this.isKLine = isKLine;
     }
 
     /**
@@ -473,10 +480,8 @@ public class MainBottomController implements Initializable {
     public void mixOnClick(ActionEvent event) {
         view_root.setBottom(null);
         if (isKLine) {
-            //webEngine.load(getClass().getResource("../html/kLine.html").toExternalForm());
-            webEngine.reload();
+            RootController.webEngine.reload();
         }
-        System.out.println("最小化");
     }
 
     /**

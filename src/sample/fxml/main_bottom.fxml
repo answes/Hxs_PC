@@ -41,7 +41,10 @@
         <Separator AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" AnchorPane.rightAnchor="0.0"/>
         <AnchorPane prefHeight="30.0" prefWidth="824" style="-fx-background-color: transparent"
                     AnchorPane.leftAnchor="176.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-            <HBox alignment="CENTER" spacing="6"  AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="15.0"
+            <Label fx:id="lb_bottom_title" prefWidth="824" style="-fx-alignment: center" text="买入"
+                   AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                   AnchorPane.topAnchor="0.0"/>
+            <HBox alignment="CENTER"  spacing="6"  AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="15.0"
                   AnchorPane.topAnchor="0.0">
                 <children>
                 <Button text="买入" onAction="#buyOnClick" fx:id="bt_buy"/>
@@ -52,13 +55,10 @@
                 <Button text="刷新" onAction="#refreshOnClick"  fx:id="bt_refresh"/>
                 </children>
             </HBox>
-            <Label fx:id="lb_bottom_title" prefWidth="824" style="-fx-alignment: center" text="买入"
-                   AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-                   AnchorPane.topAnchor="0.0"/>
             <HBox alignment="CENTER" spacing="6" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="12.0"
                   AnchorPane.topAnchor="0.0">
                 <Button text="最小化" onAction="#mixOnClick" fx:id="bt_mix"/>
-                <Button text="关闭" onAction="#lockOnClick" fx:id="bt_lock"/>
+                <Button text="上锁" onAction="#lockOnClick" fx:id="bt_lock" />
             </HBox>
         </AnchorPane>
 

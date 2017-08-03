@@ -5,6 +5,7 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -15,6 +16,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -68,11 +70,11 @@ public class RootController implements ControlledStage, Initializable {
     @FXML
     private AnchorPane bottom_details;
 
-    private WebEngine webEngine;
+    public static WebEngine webEngine;
 
-    private SimpleBooleanProperty isKLine = new SimpleBooleanProperty(false);
+    private boolean isKLine ;
 
-    private SimpleBooleanProperty isMinWindow = new SimpleBooleanProperty(false);
+    private boolean isMinWindow;
     private MainBottomController mainBottomController;
 
     @Override
@@ -111,10 +113,11 @@ public class RootController implements ControlledStage, Initializable {
             //获取MainBottomController
             mainBottomController =   fxmlLoader.getController();
             //执行获取MainBottomController更新的方法,以后tableview 点击的时候就可以调用这个方法来更新第二个Controller的数据了
-            mainBottomController.initDate(webEngine,isKLine.getValue(),view_root);
+            mainBottomController.initDate(webEngine,isKLine,view_root);
         } catch (IOException e) {
             e.printStackTrace();
         }
+        web.setOnMouseDragEntered(event -> System.out.println("不知道这个是什么"+event.getEventType().getName()));
     }
 
 
@@ -345,6 +348,7 @@ public class RootController implements ControlledStage, Initializable {
     private void setRowOnTwoClick(Commodity commodity) {
         kView.setVisible(true);
         tb_goods.setVisible(false);
+        mainBottomController.setIsKLine(true);
         webEngine.load(getClass().getResource("../html/fenshi.html").toExternalForm());
     }
 
@@ -353,13 +357,16 @@ public class RootController implements ControlledStage, Initializable {
     }
 
 
-
+    /**
+     *进入交易
+     * @param e
+     */
     public void toTranstion(ActionEvent e) {
         view_root.setBottom(bottom_root);
-        if (isKLine.getValue()) {
-            //webEngine.load(getClass().getResource("../html/kLine.html").toExternalForm());
+        if (isKLine) {
             webEngine.reload();
         }
+
     }
 
 
@@ -371,7 +378,8 @@ public class RootController implements ControlledStage, Initializable {
     public void fenshiKLine(ActionEvent event) {
         kView.setVisible(true);
         tb_goods.setVisible(false);
-        isKLine.setValue(true);
+        isKLine=true;
+        mainBottomController.setIsKLine(isKLine);
         webEngine.load(getClass().getResource("../html/fenshi.html").toExternalForm());
     }
 
@@ -383,6 +391,8 @@ public class RootController implements ControlledStage, Initializable {
     public void oneMinuteKLine(ActionEvent event) {
         kView.setVisible(true);
         tb_goods.setVisible(false);
+        isKLine=true;
+        mainBottomController.setIsKLine(isKLine);
         webEngine.load(getClass().getResource("../html/highstockTest.html").toExternalForm());
     }
 
@@ -395,6 +405,8 @@ public class RootController implements ControlledStage, Initializable {
 
         kView.setVisible(true);
         tb_goods.setVisible(false);
+        isKLine=true;
+        mainBottomController.setIsKLine(isKLine);
         webEngine.load(getClass().getResource("../html/highstockTest.html").toExternalForm());
     }
 
@@ -406,6 +418,8 @@ public class RootController implements ControlledStage, Initializable {
     public void tenMinuteKLine(ActionEvent event) {
         kView.setVisible(true);
         tb_goods.setVisible(false);
+        isKLine=true;
+        mainBottomController.setIsKLine(isKLine);
         webEngine.load(getClass().getResource("../html/highstockTest.html").toExternalForm());
     }
 
@@ -417,6 +431,8 @@ public class RootController implements ControlledStage, Initializable {
     public void fifteenMinuteKLine(ActionEvent event) {
         kView.setVisible(true);
         tb_goods.setVisible(false);
+        isKLine=true;
+        mainBottomController.setIsKLine(isKLine);
         webEngine.load(getClass().getResource("../html/highstockTest.html").toExternalForm());
     }
 
@@ -428,6 +444,8 @@ public class RootController implements ControlledStage, Initializable {
     public void thrityMinuteKLine(ActionEvent event) {
         kView.setVisible(true);
         tb_goods.setVisible(false);
+        isKLine=true;
+        mainBottomController.setIsKLine(isKLine);
         webEngine.load(getClass().getResource("../html/highstockTest.html").toExternalForm());
     }
 
@@ -440,6 +458,8 @@ public class RootController implements ControlledStage, Initializable {
     public void sixtyMinuteKLine(ActionEvent event) {
         kView.setVisible(true);
         tb_goods.setVisible(false);
+        isKLine=true;
+        mainBottomController.setIsKLine(isKLine);
         webEngine.load(getClass().getResource("../html/highstockTest.html").toExternalForm());
     }
 
@@ -451,6 +471,8 @@ public class RootController implements ControlledStage, Initializable {
     public void dayKLine(ActionEvent event) {
         kView.setVisible(true);
         tb_goods.setVisible(false);
+        isKLine=true;
+        mainBottomController.setIsKLine(isKLine);
         webEngine.load(getClass().getResource("../html/highstockTest.html").toExternalForm());
     }
 
@@ -462,6 +484,8 @@ public class RootController implements ControlledStage, Initializable {
     public void weekKLine(ActionEvent event) {
         kView.setVisible(true);
         tb_goods.setVisible(false);
+        isKLine=true;
+        mainBottomController.setIsKLine(isKLine);
         webEngine.load(getClass().getResource("../html/highstockTest.html").toExternalForm());
     }
 
@@ -473,6 +497,8 @@ public class RootController implements ControlledStage, Initializable {
     public void monthKLine(ActionEvent event) {
         kView.setVisible(true);
         tb_goods.setVisible(false);
+        isKLine=true;
+        mainBottomController.setIsKLine(isKLine);
         webEngine.load(getClass().getResource("../html/highstockTest.html").toExternalForm());
     }
 
@@ -482,8 +508,9 @@ public class RootController implements ControlledStage, Initializable {
      */
     public void homeClick(MouseEvent event){
         kView.setVisible(false);
-        isKLine.setValue(false);
+        isKLine=false;
         tb_goods.setVisible(true);
+        mainBottomController.setIsKLine(isKLine);
     }
 
     /**
@@ -493,8 +520,9 @@ public class RootController implements ControlledStage, Initializable {
     public void kLineClick(MouseEvent event){
         tb_goods.setVisible(false);
         kView.setVisible(true);
-        isKLine.setValue(true);
-        webEngine.load(getClass().getResource("../html/highstockTest.html").toExternalForm());
+        isKLine=true;
+        mainBottomController.setIsKLine(isKLine);
+        webEngine.load(getClass().getResource("../html/test.html").toExternalForm());
     }
 
     /**
@@ -524,7 +552,6 @@ public class RootController implements ControlledStage, Initializable {
         List<String> choices = new ArrayList<>();
         choices.add("清空");
         choices.add("不清空");
-        choices.add("c");
 
         ChoiceDialog<String> dialog = new ChoiceDialog<>("不清空", choices);
         dialog.setTitle("系统设置");
@@ -544,7 +571,6 @@ public class RootController implements ControlledStage, Initializable {
      * @param event
      */
     public  void dealDetails(MouseEvent event){
-
     }
 
     /**
@@ -572,7 +598,7 @@ public class RootController implements ControlledStage, Initializable {
      * @param event
      */
     public void scaleWindow(ActionEvent event) {
-        if (isMinWindow.getValue()) {
+        if (isMinWindow) {
             myController.getStage(Constant.rootViewID).setMaximized(true);
         } else {
 //            myController.getStage(Constant.rootViewID)

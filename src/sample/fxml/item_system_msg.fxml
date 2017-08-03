@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:id="root"
+            minHeight="30.0" prefWidth="800" AnchorPane.rightAnchor="0.0" >
+        <Label fx:id="lb_id" text="1" AnchorPane.topAnchor="8" AnchorPane.leftAnchor="12"/>
+        <Label text="关于2019十月一日国庆放假通知" fx:id="lb_title" AnchorPane.leftAnchor="100" AnchorPane.topAnchor="8" />
+        <Label text="2017-05-05 00：00：00" fx:id="lb_date" AnchorPane.rightAnchor="60" AnchorPane.topAnchor="8" />
+
+</AnchorPane>
