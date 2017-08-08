@@ -76,16 +76,16 @@
 </script>
 <script>
     Highcharts.theme = {
-        //fcfc54 黄 dd54fc 粉 54fc54 嫩绿 3f54fc 深蓝 a8a8a8 灰 00a800 老绿  a80000 深红 fcfcfc 白 54fcfc 青 fc54fc 紫
-        colors: ["#fcfc54","#dd54fc","#54fc54","#3f54fc","#a8a8a8","#00a800","#a80000","#fcfcfc","#54fcfc","#fc54fc" ],
+        //fcfc54 黄 dd54fc 粉 54fc54 嫩绿 3f54fc 深蓝 a8a8a8 灰 54FCFC 老绿  a80000 深红 fcfcfc 白 54fcfc 青 fc54fc 紫
+        colors: ["#fcfc54","#dd54fc","#54fc54","#3f54fc","#a8a8a8","#54FCFC","#a80000","#fcfcfc","#54fcfc","#fc54fc" ],
         //colors: ["#514F78", "#42A07B", "#9B5E4A", "#72727F", "#1F949A", "#82914E", "#86777F", "#42A07B"],
         chart: {
             className: 'stock-qianlong',
             borderWidth: 0,
             plotShadow: false , //true,
             //plotBackgroundImage: 'http://www.highcharts.com/demo/gfx/skies.jpg',
-            plotBorderColor: '#CC0000',
-            plotBorderWidth: 3,
+            plotBorderColor: '#fff',
+            plotBorderWidth: 1,
             plotBackgroundColor: '#000000',
             backgroundColor: '#000000',
             spacingTop: 10,
@@ -121,28 +121,15 @@
             valueDecimals: 2        //,       			positioner: function () {                return { x: 10, y: 35 };            }
         },
         credits: {
-            enabled:false  ,
-            href:"http://www.hcharts.cn",
-            position: {
-                align: 'left',
-                x: 10,
-                verticalAlign: 'bottom',
-                y: -2
-            },
-            style: {  			//
-                cursor: 'pointer',
-                color: '#009090',
-                fontSize: '9px'
-            },
-            text: ['感谢 hcharts.cn  &  highcharts.com 提供图表支持']
+            enabled:false
         },
         plotOptions: {
             arearange:{
                 fillOpacity: 0.2,
             } ,
             line: {
-                lineWidth: 1.3,
-                fillOpacity: 1.1,
+                lineWidth: 0.5,
+                fillOpacity: 0.7,
                 marker: {
                     enabled: false,
                     states: {
@@ -162,42 +149,16 @@
             },
             candlestick: {
                 lineColor:'green',
-                color: 'green',//'#00a800',
+                color: 'green',//'#54FCFC',
                 upColor: '#a80000',
                 upLineColor: '#a80000'
             }
         },
-        xAxis: {
-            gridLineWidth: 1.5,
-            gridLineColor: 'rgba(255, 0, 0, .5)',
-            lineColor: '#a80000',
-            //tickColor: '#C0D0E0',
-            showFirstLabel: true,
-            showLastLabel: true,
-            startOnTick: false,//true,//
-            endOnTick:false,
-            minPadding:0,
-            maxPadding:0,
-            tickWidth: 2,
-            tickColor: '#a80000',
-            tickPosition: 'outside',
-            type: 'datetime',
-            dateTimeLabelFormats:{hour: '%H:%M',day: '%e. %b',month: '%b \'%y',	year: '%Y'},
-            lineWidth: 0,
-            offset: 1,
-            labels: {
-                style: {color:"#fcfc54"}
-            },
-            title: {
-                style: {
-                    color: '#666',
-                    font: '12px Lucida Grande, Lucida Sans Unicode, Verdana, Arial, Helvetica, sans-serif'
-                }
-            }
-        },
         yAxis: {
-            gridLineColor: 'rgba(255, 0, 0, .5)',
-            minorGridLineColor: 'rgba(255,0,0,0.3)',
+            gridLineDashStyle:"Dot",
+            minorGridLineWidth: 0,
+            gridLineColor: 'rgba(255, 255, 255, 0.5)',
+            minorGridLineColor: 'rgba(255,255,255,0.3)',
             title: {
                 text: null,
                 style: {
@@ -652,6 +613,160 @@
             [1368057600000,456.77],
             [1368144000000,452.97]
         ];
+        var vol = [
+            {x:1349049600000,y:160731388,color:'#a80000'},
+            {x:1349136000000,y:167371108,color:'#54FCFC'},
+            {x:1349222400000,y:136672743,color:'#54FCFC'},
+            {x:1349308800000,y:163673760,color:'#a80000'},
+            {x:1349395200000,y:146946022,color:'#a80000'},
+            {x:1349654400000,y:144055682,color:'#a80000'},
+            {x:1349740800000,y:189416002,color:'#a80000'},
+            {x:1349827200000,y:200583223,color:'#54FCFC'},
+            {x:1349913600000,y:170548430,color:'#a80000'},
+            {x:1350000000000,y:162719306,color:'#a80000'},
+            {x:1350259200000,y:189731649,color:'#54FCFC'},
+            {x:1350345600000,y:193029144,color:'#a80000'},
+            {x:1350432000000,y:219777914,color:'#a80000'},
+            {x:1350518400000,y:201852675,color:'#54FCFC'},
+            {x:1350604800000,y:161710013,color:'#54FCFC'},
+            {x:1350864000000,y:216105575,color:'#54FCFC'},
+            {x:1350950400000,y:247135479,color:'#54FCFC'},
+            {x:1351036800000,y:196442922,color:'#a80000'},
+            {x:1351123200000,y:248320202,color:'#a80000'},
+            {x:1351209600000,y:245287999,color:'#a80000'},
+            {x:1351641600000,y:236108942,color:'#a80000'},
+            {x:1351728000000,y:232694616,color:'#54FCFC'},
+            {x:1351814400000,y:281281248,color:'#a80000'},
+            {x:1352073600000,y:269381790,color:'#54FCFC'},
+            {x:1352160000000,y:207346875,color:'#a80000'},
+            {x:1352246400000,y:214508558,color:'#54FCFC'},
+            {x:1352332800000,y:212737189,color:'#54FCFC'},
+            {x:1352419200000,y:188661353,color:'#54FCFC'},
+            {x:1352678400000,y:213238075,color:'#54FCFC'},
+            {x:1352764800000,y:190873985,color:'#a80000'},
+            {x:1352851200000,y:164761740,color:'#a80000'},
+            {x:1352937600000,y:186277434,color:'#54FCFC'},
+            {x:1353024000000,y:153418307,color:'#a80000'},
+            {x:1353283200000,y:169878107,color:'#a80000'},
+            {x:1353369600000,y:211793073,color:'#a80000'},
+            {x:1353456000000,y:162889899,color:'#a80000'},
+            {x:1353628800000,y:154222962,color:'#54FCFC'},
+            {x:1353888000000,y:163763924,color:'#54FCFC'},
+            {x:1353974400000,y:177967485,color:'#a80000'},
+            {x:1354060800000,y:176213641,color:'#54FCFC'},
+            {x:1354147200000,y:180526904,color:'#54FCFC'},
+            {x:1354233600000,y:135066674,color:'#a80000'},
+            {x:1354492800000,y:160794452,color:'#54FCFC'},
+            {x:1354579200000,y:191341901,color:'#a80000'},
+            {x:1354665600000,y:159684099,color:'#a80000'},
+            {x:1354752000000,y:135660728,color:'#a80000'},
+            {x:1354838400000,y:173775564,color:'#a80000'},
+            {x:1355097600000,y:168674158,color:'#54FCFC'},
+            {x:1355184000000,y:148620035,color:'#a80000'},
+            {x:1355270400000,y:129635230,color:'#a80000'},
+            {x:1355356800000,y:153683730,color:'#54FCFC'},
+            {x:1355443200000,y:178310599,color:'#54FCFC'},
+            {x:1355702400000,y:139813353,color:'#a80000'},
+            {x:1355788800000,y:191391841,color:'#a80000'},
+            {x:1355875200000,y:155923486,color:'#a80000'},
+            {x:1355961600000,y:152950430,color:'#54FCFC'},
+            {x:1356048000000,y:163015719,color:'#54FCFC'},
+            {x:1356307200000,y:142504925,color:'#a80000'},
+            {x:1356480000000,y:132570300,color:'#54FCFC'},
+            {x:1356566400000,y:113439963,color:'#a80000'},
+            {x:1356652800000,y:173229014,color:'#a80000'},
+            {x:1356912000000,y:152277659,color:'#a80000'},
+            {x:1357084800000,y:160136334,color:'#a80000'},
+            {x:1357171200000,y:146729425,color:'#54FCFC'},
+            {x:1357257600000,y:128318279,color:'#a80000'},
+            {x:1357516800000,y:138347042,color:'#54FCFC'},
+            {x:1357603200000,y:146954245,color:'#a80000'},
+            {x:1357689600000,y:129652758,color:'#54FCFC'},
+            {x:1357776000000,y:134891758,color:'#a80000'},
+            {x:1357862400000,y:141191802,color:'#54FCFC'},
+            {x:1358121600000,y:136688268,color:'#a80000'},
+            {x:1358208000000,y:191344006,color:'#54FCFC'},
+            {x:1358294400000,y:154843648,color:'#a80000'},
+            {x:1358380800000,y:173579211,color:'#a80000'},
+            {x:1358467200000,y:148201198,color:'#a80000'},
+            {x:1358812800000,y:146516720,color:'#54FCFC'},
+            {x:1358899200000,y:128755470,color:'#a80000'},
+            {x:1358985600000,y:121464543,color:'#a80000'},
+            {x:1359072000000,y:140305717,color:'#a80000'},
+            {x:1359331200000,y:141114967,color:'#54FCFC'},
+            {x:1359417600000,y:148296483,color:'#a80000'},
+            {x:1359504000000,y:175809287,color:'#a80000'},
+            {x:1359590400000,y:176715416,color:'#a80000'},
+            {x:1359676800000,y:198928010,color:'#a80000'},
+            {x:1359936000000,y:187837262,color:'#a80000'},
+            {x:1360022400000,y:186900880,color:'#54FCFC'},
+            {x:1360108800000,y:195303611,color:'#a80000'},
+            {x:1360195200000,y:160126773,color:'#a80000'},
+            {x:1360281600000,y:266205274,color:'#54FCFC'},
+            {x:1360540800000,y:190623060,color:'#a80000'},
+            {x:1360627200000,y:272420726,color:'#a80000'},
+            {x:1360713600000,y:232108392,color:'#a80000'},
+            {x:1360800000000,y:206003251,color:'#a80000'},
+            {x:1360886400000,y:233056399,color:'#a80000'},
+            {x:1361232000000,y:205573873,color:'#54FCFC'},
+            {x:1361318400000,y:213542005,color:'#a80000'},
+            {x:1361404800000,y:228485945,color:'#a80000'},
+            {x:1361491200000,y:182226880,color:'#a80000'},
+            {x:1361750400000,y:246039440,color:'#a80000'},
+            {x:1361836800000,y:157700384,color:'#a80000'},
+            {x:1361923200000,y:160731388,color:'#a80000'},
+            {x:1362009600000,y:167371108,color:'#54FCFC'},
+            {x:1362096000000,y:136672743,color:'#54FCFC'},
+            {x:1362355200000,y:163673760,color:'#a80000'},
+            {x:1362441600000,y:146946022,color:'#a80000'},
+            {x:1362528000000,y:144055682,color:'#a80000'},
+            {x:1362614400000,y:189416002,color:'#a80000'},
+            {x:1362700800000,y:200583223,color:'#54FCFC'},
+            {x:1362960000000,y:170548430,color:'#a80000'},
+            {x:1363046400000,y:162719306,color:'#a80000'},
+            {x:1363132800000,y:189731649,color:'#54FCFC'},
+            {x:1363219200000,y:193029144,color:'#a80000'},
+            {x:1363305600000,y:219777914,color:'#a80000'},
+            {x:1363564800000,y:201852675,color:'#54FCFC'},
+            {x:1363651200000,y:161710013,color:'#54FCFC'},
+            {x:1363737600000,y:216105575,color:'#54FCFC'},
+            {x:1363824000000,y:247135479,color:'#54FCFC'},
+            {x:1363910400000,y:196442922,color:'#a80000'},
+            {x:1364169600000,y:248320202,color:'#a80000'},
+            {x:1364256000000,y:245287999,color:'#a80000'},
+            {x:1364342400000,y:236108942,color:'#a80000'},
+            {x:1364428800000,y:232694616,color:'#54FCFC'},
+            {x:1364774400000,y:281281248,color:'#a80000'},
+            {x:1364860800000,y:269381790,color:'#54FCFC'},
+            {x:1364947200000,y:207346875,color:'#a80000'},
+            {x:1365033600000,y:214508558,color:'#54FCFC'},
+            {x:1365120000000,y:212737189,color:'#54FCFC'},
+            {x:1365379200000,y:188661353,color:'#54FCFC'},
+            {x:1365465600000,y:213238075,color:'#54FCFC'},
+            {x:1365552000000,y:190873985,color:'#a80000'},
+            {x:1365638400000,y:164761740,color:'#a80000'},
+            {x:1365724800000,y:186277434,color:'#54FCFC'},
+            {x:1365984000000,y:153418307,color:'#a80000'},
+            {x:1366070400000,y:169878107,color:'#a80000'},
+            {x:1366156800000,y:211793073,color:'#a80000'},
+            {x:1366243200000,y:162889899,color:'#a80000'},
+            {x:1366329600000,y:154222962,color:'#54FCFC'},
+            {x:1366588800000,y:163763924,color:'#54FCFC'},
+            {x:1366675200000,y:177967485,color:'#a80000'},
+            {x:1366761600000,y:176213641,color:'#54FCFC'},
+            {x:1366848000000,y:180526904,color:'#54FCFC'},
+            {x:1366934400000,y:135066674,color:'#a80000'},
+            {x:1367193600000,y:160794452,color:'#54FCFC'},
+            {x:1367280000000,y:191341901,color:'#a80000'},
+            {x:1367366400000,y:159684099,color:'#a80000'},
+            {x:1367452800000,y:135660728,color:'#a80000'},
+            {x:1367539200000,y:173775564,color:'#a80000'},
+            {x:1367798400000,y:168674158,color:'#54FCFC'},
+            {x:1367884800000,y:148620035,color:'#a80000'},
+            {x:1367971200000,y:129635230,color:'#a80000'},
+            {x:1368057600000,y:153683730,color:'#54FCFC'},
+            {x:1368144000000,y:178310599,color:'#54FCFC'}
+        ];
         Highcharts.setOptions(Highcharts.option);
         //导入主题
         Highcharts.setOptions(Highcharts.theme);
@@ -677,6 +792,7 @@
                         format: '{value:%H:%M:%S}'
                     }
                 },
+
             },
             exporting:{
                 enabled:false
@@ -699,12 +815,72 @@
                         useHTML: true
                     }
                 },
+                plotLines:[{
+                    color:'#fff',            //线的颜色，定义为红色
+                    dashStyle:'longdash',     //默认是值，这里定义为长虚线
+                    value:450,              //定义在那个值上显示标示线，这里是在x轴上刻度为3的值处垂直化一条线
+                    width:2,               //标示线的宽度，2px
+                    label:{
+                        text:null,     //标签的内容
+                        align:'left',                //标签的水平位置，水平居左,默认是水平居中center
+                        x:10,                         //标签相对于被定位的位置水平偏移的像素，重新定位，水平居左10px
+                        style:{
+                            fontSize:'14px',
+                            fontWeight:'bold'
+                        }
+                    }}],
                 labels: {
+                    formatter:function () {
+                        if(this.value>450){
+                            return '<span style="color: red">'+this.value+'</span>'
+                        }else if(this.value<450){
+                            return '<span style="color: chartreuse">'+this.value+'</span>'
+                        }else{
+                            return '<span style="color: white">'+this.value+'</span>'
+                        }
+                    },
                     align: 'right',
-                    format: '{value:.5f}',
-                    y: 6,
-                    x: 80
-                }
+                    x:-6
+                },
+                height: '70%',
+                opposite: false
+            },{
+
+                linkedTo: 0,
+                labels: {
+                    formatter:function () {
+                        var percentage = ((this.value - 450)/450).toFixed(2);
+                        if(this.value>450){
+                            return '<span style="color: red">'+ percentage+'</span>'
+                        }else if(this.value<450){
+                            return '<span style="color: chartreuse">'+ percentage+'</span>'
+                        }else{
+                            return '<span style="color: white">'+0+'</span>'
+                        }
+                    },
+                    align: 'left',
+                    x:6,
+                },
+                opposite: true,
+                height: '70%'
+
+            }, {
+                minorTickInterval: 'auto',
+                labels: {
+                    style:
+                        {"color":"#FCFFa5","fontWeight":"bold"},
+                    align: 'right',
+                    x: -3
+                },
+                title: {
+                    text: ''
+                },
+                /*Volume*/
+                top: '70%',
+                height: '30%',
+                offset: 0,
+                lineWidth: 0,
+                opposite: false
             }],
             navigation:{
                 buttonOptions:{
@@ -717,7 +893,8 @@
                 type: 'line',
                 tooltip: {
                     valueDecimals: 2
-                }
+                },
+                yAxis: 0
             },{
                 name: '均价',
                 data: datas,
@@ -726,7 +903,18 @@
                 tooltip: {
                     //这个是保留小数点
                     valueDecimals: 2
-                }
+                },
+                yAxis: 0
+            },{
+                name: '分时量',
+                data: vol,
+                type: 'column',
+                color:'#fff',
+                tooltip: {
+                    //这个是保留小数点
+                    valueDecimals: 2
+                },
+                yAxis:2
             }]
         });
     });

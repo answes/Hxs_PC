@@ -50,18 +50,11 @@ public class FundsMsgController implements Initializable {
 
     private void initList() {
         list1.setItems(listdata1);
-        list1.setCellFactory(param -> {
-            return new FundsListViewCell();
-        });
+        list1.setCellFactory(param ->new FundsListViewCell());
         list2.setItems(listdata2);
-        list2.setCellFactory(param -> {
-            return new FundsListViewCell();
-        });
+        list2.setCellFactory(param -> new FundsListViewCell());
         list3.setItems(listdata3);
-        list3.setCellFactory(param -> {
-            return new FundsListViewCell();
-        });
-
+        list3.setCellFactory(param -> new FundsListViewCell());
 
     }
 

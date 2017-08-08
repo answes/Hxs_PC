@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
@@ -41,11 +42,11 @@
                 <RadioButton fx:id="market_price_consign" text="市价委托" toggleGroup="$priceGroup" />
             </HBox>
             <HBox alignment="CENTER" spacing="6">
-                <Label text="买入价格" fx:id="lb_byy_price" />
+                <Label fx:id="lb_byy_price" text="买入价格" />
                 <TextField fx:id="tf_buy_price" prefWidth="85.0" />
             </HBox>
             <HBox alignment="CENTER" spacing="6">
-                <Label text="可买数量" fx:id="lb_can_buy"/>
+                <Label fx:id="lb_can_buy" text="可买数量" />
                 <TextField fx:id="tf_can_buynum" disable="true" prefWidth="85.0" text="12" />
             </HBox>
             <HBox alignment="CENTER" spacing="6">
@@ -62,7 +63,7 @@
                 <Button text="提交" />
             </VBox>
         </VBox>
-<Separator orientation="VERTICAL" maxWidth="1" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="199.5" AnchorPane.rightAnchor="199.5" AnchorPane.topAnchor="0.0" />
+<Separator maxWidth="1" orientation="VERTICAL" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="199.5" AnchorPane.rightAnchor="199.5" AnchorPane.topAnchor="0.0" />
         <VBox prefWidth="200.0" spacing="6" style="-fx-background-color: transparent" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <HBox prefWidth="200.0" spacing="60">
                 <Label text="卖五">
@@ -198,5 +199,17 @@
             </HBox>
         </VBox>
     </AnchorPane>
-    <TableView fx:id="tb_details" prefHeight="400.0" prefWidth="624.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+    <TableView  fx:id="tb_details" prefHeight="400.0" prefWidth="624.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <columns >
+         <TableColumn fx:id="goodNum" prefWidth="75.0" resizable="false" text="商品代码" />
+         <TableColumn fx:id="goodName" prefWidth="75.0" resizable="false" text="商品名称" />
+         <TableColumn fx:id="avgPrice" prefWidth="75.0" resizable="false" text="持仓均价" />
+         <TableColumn fx:id="nowPrice" prefWidth="75.0" resizable="false" text="当前价" />
+         <TableColumn fx:id="count" prefWidth="75.0" resizable="false" text="总持有量" />
+         <TableColumn fx:id="loan" prefWidth="75.0" resizable="false" text="货款" />
+         <TableColumn fx:id="useNum" prefWidth="75.0" resizable="false" text="可用数量" />
+         <TableColumn fx:id="postionWin" prefWidth="75.0" resizable="false" text="持仓盈亏" />
+         <TableColumn fx:id="winScale" prefWidth="75.0" resizable="false" text="盈亏比例" />
+         <TableColumn fx:id="marketValue" prefWidth="75.0" resizable="false" text="市值" />
+      </columns></TableView>
 </AnchorPane>

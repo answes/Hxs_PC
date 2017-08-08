@@ -30,4 +30,9 @@ public class Constant {
     public static final String SYSTEMMSG = "systemMsg";
 
 
+
+    public static final int SIGNED = 0;
+    public static  final int TERMINATION = 1;
+
+
 }

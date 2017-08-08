@@ -229,18 +229,6 @@ public class MainBottomController implements Initializable {
         printOrdernRoot.setId("printOrder");
         rootLayouts.put(printOrdernRoot.getId(),printOrdernRoot);
 
-//        //productCotroller
-//        AnchorPane productRoot = null;
-//        FXMLLoader productLoader = new FXMLLoader(getClass().getResource("../fxml/product.fxml"));
-//        try {
-//            productRoot =  productLoader.load();
-//            bottom_details.getChildren().add(productRoot);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        productCotroller =  productLoader.getController();
-//        productRoot.setId("product");
-//        rootLayouts.put(productRoot.getId(),productRoot);
 
         //purchaseController 申购
         AnchorPane  purchaseRoot = null;
@@ -322,11 +310,11 @@ public class MainBottomController implements Initializable {
                     switch (newValue.getValue()){
                         case "买入":
                             showController(Constant.TRASTATION);
-                            transtationController.initData(1,newValue.getValue());
+                            transtationController.initData(1);
                             break;
                         case "卖出":
                             showController(Constant.TRASTATION);
-                            transtationController.initData(2,newValue.getValue());
+                            transtationController.initData(2);
                             break;
                         case "撤单":
                             showController(Constant.PRINTORDER);
@@ -405,7 +393,7 @@ public class MainBottomController implements Initializable {
                         case "提货查询":
                             break;
                         default:
-                            transtationController.initData(1,newValue.getValue());
+                            transtationController.initData(1);
                             break;
                     }
                     lb_bottom_title.setText(newValue.getValue());
@@ -425,6 +413,8 @@ public class MainBottomController implements Initializable {
      */
     public void buyOnClick(ActionEvent event) {
         lb_bottom_title.setText("买入");
+        showController(Constant.TRASTATION);
+        transtationController.initData(1);
     }
 
     /**
@@ -434,6 +424,8 @@ public class MainBottomController implements Initializable {
      */
     public void sellOnClick(ActionEvent event) {
         lb_bottom_title.setText("卖出");
+        showController(Constant.TRASTATION);
+        transtationController.initData(2);
     }
 
     /**
@@ -443,6 +435,8 @@ public class MainBottomController implements Initializable {
      */
     public void cancelOnClick(ActionEvent event) {
         lb_bottom_title.setText("撤单");
+        showController(Constant.PRINTORDER);
+        printOrderController.init();
     }
 
     /**
@@ -452,6 +446,8 @@ public class MainBottomController implements Initializable {
      */
     public void dealOnClick(ActionEvent event) {
         lb_bottom_title.setText("成交查询");
+        showController(Constant.DEALQUERY);
+        dealQueryController.init(1);
     }
 
     /**
@@ -461,6 +457,8 @@ public class MainBottomController implements Initializable {
      */
     public void haveOnClick(ActionEvent event) {
         lb_bottom_title.setText("持仓汇总");
+        showController(Constant.POSITION);
+        positionController.init(1);
     }
 
     /**

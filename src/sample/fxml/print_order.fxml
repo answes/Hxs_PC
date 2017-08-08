@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="sample.Controller.PrintOrderController"
-            AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-    <TableView AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.bottomAnchor="0.0"/>
+<AnchorPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.PrintOrderController">
+    <TableView fx:id="tv_cancel"  AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <columns>
+         <TableColumn fx:id="orderNo" prefWidth="75.0" minWidth="70" text="委托单号" />
+         <TableColumn fx:id="goodCode" prefWidth="75.0" minWidth="70" text="商品单号" />
+         <TableColumn fx:id="goodName" prefWidth="75.0" minWidth="70" text="商品名称" />
+         <TableColumn fx:id="inOrOut" prefWidth="75.0" minWidth="70" text="买/卖" />
+         <TableColumn fx:id="money" prefWidth="75.0"  minWidth="70" text="委托价格" />
+         <TableColumn fx:id="num" prefWidth="75.0"  minWidth="70" text="委托数量" />
+         <TableColumn fx:id="noDeal" prefWidth="75.0" minWidth="70"  text="未成交数量" />
+         <TableColumn fx:id="state" prefWidth="75.0"  minWidth="70" text="状态" />
+         <TableColumn fx:id="createTime" prefWidth="130.0" minWidth="100" text="委托时间" />
+          <TableColumn fx:id="cencal" prefWidth="100.0" minWidth="100" text="操作"/>
+      </columns>
+    </TableView>
 </AnchorPane>

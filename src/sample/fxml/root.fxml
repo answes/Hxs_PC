@@ -5,6 +5,9 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.ImageView?>
@@ -17,6 +20,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.web.WebView?>
 
+<?import javafx.scene.control.TableColumn?>
 <BorderPane fx:id="view_root" maxHeight="Infinity" maxWidth="Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.RootController">
 
     <stylesheets>
@@ -32,13 +36,34 @@
             </VBox>
             <Label fx:id="lb_move" prefHeight="30.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="0.0" />
             <HBox AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                <Button fx:id="bt_top_system" text="系统" />
-                <Button fx:id="bt_top_zijin" text="资金">
-                    <HBox.margin>
-                        <Insets left="15.0" right="15.0" />
-                    </HBox.margin>
-                </Button>
-                <Button fx:id="bt_top_util" text="工具" />
+            <MenuBar>
+              <menus>
+                <Menu mnemonicParsing="false" text="系统">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#historyQurey" text="历史查询" />
+                      <MenuItem mnemonicParsing="false" onAction="#complaints" text="投诉/申述" />
+                      <MenuItem mnemonicParsing="false" onAction="#addressManege" text="地址管理" />
+                      <MenuItem mnemonicParsing="false" onAction="#systemSet" text="系统设置" />
+                      <MenuItem mnemonicParsing="false" onAction="#aboutMe" text="关于" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="资金">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#signed" text="签约申请" />
+                      <MenuItem mnemonicParsing="false" onAction="#termination" text="签约申请" />
+                      <MenuItem mnemonicParsing="false" onAction="#outMoney" text="出金" />
+                      <MenuItem mnemonicParsing="false" onAction="#clientReport" text="客户报表" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="工具">
+                  <items>
+                      <MenuItem mnemonicParsing="false" onAction="#calculator" text="计算器" />
+                      <MenuItem mnemonicParsing="false" onAction="#refresh" text="刷新" />
+                      <MenuItem mnemonicParsing="false" onAction="#restore" text="恢复默认布局" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
                 <Button fx:id="bt_scale" onAction="#zoomWindow" text="一">
                     <HBox.margin>
                         <Insets left="50.0" />
@@ -283,7 +308,35 @@
                </rowConstraints>
                </GridPane>
             </AnchorPane>
-            <TableView fx:id="tb_goods" prefHeight="450.0" prefWidth="1200.0" visible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0" />
+            <AnchorPane fx:id="goods_root" prefHeight="450.0" prefWidth="1200.0" visible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+                <TableView fx:id="tb_goods" prefHeight="450.0" prefWidth="1200.0" visible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" >
+                    <columns>
+                        <TableColumn fx:id="number" prefWidth="80" minWidth="80" text="编号"/>
+                        <TableColumn fx:id="commNum" prefWidth="80" minWidth="80" text="商品代码"/>
+                        <TableColumn fx:id="commName" prefWidth="80" minWidth="80" text="商品名称"/>
+                        <TableColumn fx:id="openPrice" prefWidth="80" minWidth="80" text="开盘价"/>
+                        <TableColumn fx:id="newPrice" prefWidth="80" minWidth="80" text="最新价"/>
+                        <TableColumn fx:id="count" prefWidth="80" minWidth="80" text="现量"/>
+                        <TableColumn fx:id="upDown" prefWidth="80" minWidth="80" text="涨跌"/>
+                        <TableColumn fx:id="extent" prefWidth="80" minWidth="80" text="幅度%"/>
+                        <TableColumn fx:id="maxPrice" prefWidth="80" minWidth="80" text="最高价"/>
+                        <TableColumn fx:id="mixPrice" prefWidth="80" minWidth="80" text="最低价"/>
+                        <TableColumn fx:id="yestedayPrice" prefWidth="80" minWidth="80" text="昨收盘价"/>
+                        <TableColumn fx:id="comePrice" prefWidth="80" minWidth="80" text="买价"/>
+                        <TableColumn fx:id="comeNumber" prefWidth="80" minWidth="80" text="买量"/>
+                        <TableColumn fx:id="outPrice" prefWidth="80" minWidth="80" text="卖价"/>
+                        <TableColumn fx:id="outNumber" prefWidth="80" minWidth="80" text="卖量"/>
+                        <TableColumn fx:id="overNumber" prefWidth="80" minWidth="80" text="成交量"/>
+                        <TableColumn fx:id="overMoney" prefWidth="80" minWidth="80" text="成交金额"/>
+                        <TableColumn fx:id="avgPrice" prefWidth="80" minWidth="80" text="均价"/>
+                        <TableColumn fx:id="stockNumber" prefWidth="80" minWidth="80" text="库存量"/>
+                        <TableColumn fx:id="numberScale" prefWidth="80" minWidth="80" text="量比%"/>
+                        <TableColumn fx:id="trustScale" prefWidth="80" minWidth="80" text="委比%"/>
+                        <TableColumn fx:id="exchangeScale" prefWidth="80" minWidth="80" text="换手率%"/>
+                    </columns>
+                </TableView>
+            <HBox fx:id="good_type" spacing="4" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="6.0" />
+            </AnchorPane>
         </AnchorPane>
     </center>
     <bottom>

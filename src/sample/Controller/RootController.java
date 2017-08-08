@@ -1,43 +1,41 @@
 package sample.Controller;
 
 import javafx.application.Platform;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import sample.popupwindow.ComplaintsDialog;
+import sample.popupwindow.OutMoneyDialog;
+import sample.popupwindow.SignedDialog;
+import sample.popupwindow.SystemSetDialog;
 import sample.bean.Commodity;
 import sample.util.Constant;
 import sample.util.ControlledStage;
 import sample.util.StageController;
 
 
-import java.awt.*;
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
 /**
@@ -65,42 +63,144 @@ public class RootController implements ControlledStage, Initializable {
     @FXML
     private AnchorPane bottom_root;
     @FXML
+    private AnchorPane goods_root;
+    @FXML
     private BorderPane view_root;
-
+    @FXML
+    private HBox good_type;
     @FXML
     private AnchorPane bottom_details;
+    /**
+     * tableview Column
+     */
+    @FXML
+    private TableColumn<Commodity, String> number;
+    @FXML
+    private TableColumn<Commodity, String> commNum;
+    @FXML
+    private TableColumn<Commodity, String> commName;
+    @FXML
+    private TableColumn<Commodity, String> openPrice;
+    @FXML
+    private TableColumn<Commodity, String> newPrice;
+    @FXML
+    private TableColumn<Commodity, String> count;
+    @FXML
+    private TableColumn<Commodity, String> upDown;
+    @FXML
+    private TableColumn<Commodity, String> extent;
+    @FXML
+    private TableColumn<Commodity, String> maxPrice;
+    @FXML
+    private TableColumn<Commodity, String> mixPrice;
+    @FXML
+    private TableColumn<Commodity, String> yestedayPrice;
+    @FXML
+    private TableColumn<Commodity, String> comePrice;
+    @FXML
+    private TableColumn<Commodity, String> comeNumber;
+    @FXML
+    private TableColumn<Commodity, String> outPrice;
+    @FXML
+    private TableColumn<Commodity, String> outNumber;
+    @FXML
+    private TableColumn<Commodity, String> overNumber;
+    @FXML
+    private TableColumn<Commodity, String> overMoney;
+    @FXML
+    private TableColumn<Commodity, String> avgPrice;
+    @FXML
+    private TableColumn<Commodity, String> stockNumber;
+    @FXML
+    private TableColumn<Commodity, String> numberScale;
+    @FXML
+    private TableColumn<Commodity, String> trustScale;
+    @FXML
+    private TableColumn<Commodity, String> exchangeScale;
 
     public static WebEngine webEngine;
-
-    private boolean isKLine ;
-
+    @FXML
+    private boolean isKLine;
+    @FXML
     private boolean isMinWindow;
+    @FXML
     private MainBottomController mainBottomController;
+
+    private final ObservableList<Commodity> datas = FXCollections.observableArrayList(new Commodity(1, "80008", "人参糖", 12.0, 10.3, 30, 0.12, 0.03, 35.0, 9.5, 20.3, 25.5, 56, 25.6, 33, 80, 23.1, 22.3, 10000, 0.00, 0.00, 0.00)
+            , new Commodity(2, "80008", "芝麻糖", 12.0, 10.3, 20, 1.12, 0.03, 35.0, 9.5, 20.3, 25.5, 56, 25.6, 33, 80, 23.1, 22.3, 10000, 0.00, 0.00, 0.00)
+            , new Commodity(3, "80009", "百度糖", 22.0, 20.3, 30, 2.12, 0.03, 35.0, 9.5, 20.3, 25.5, 56, 25.6, 33, 80, 23.1, 22.3, 10000, 0.00, 0.00, 0.00)
+            , new Commodity(4, "80010", "不知糖", 32.0, 30.3, 40, 3.12, 0.03, 35.0, 9.5, 20.3, 25.5, 56, 25.6, 33, 80, 23.1, 22.3, 10000, 0.00, 0.00, 0.00)
+            , new Commodity(5, "80011", "砂糖糖", 42.0, 40.3, 50, 4.12, 0.03, 35.0, 9.5, 20.3, 25.5, 56, 25.6, 33, 80, 23.1, 22.3, 10000, 0.00, 0.00, 0.00)
+            , new Commodity(6, "80012", "人参糖", 52.0, 50.3, 60, 5.12, 0.03, 35.0, 9.5, 20.3, 25.5, 56, 25.6, 33, 80, 23.1, 22.3, 10000, 0.00, 0.00, 0.00));
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         initData();
-        onClick();
         web.setContextMenuEnabled(false);
         webEngine = web.getEngine();
     }
-
+    @FXML
     private void initData() {
         initGoodTable();
         initImage();
         initTranstasionTable();
         initBottom();
+        initGoodBottom();
+    }
+
+    @FXML
+    private void initGoodBottom() {
+        ObservableList<Button> buttons = FXCollections.observableArrayList();
+        for (int i = 0; i < 5; i++) {
+            Button button = new Button("海香所" + i);
+            button.setStyle(" -fx-background-color: linear-gradient(#ff5400, #be1d00);\n" +
+                    "    -fx-background-radius: 30;\n" +
+                    "    -fx-background-insets: 0;\n" +
+                    "    -fx-text-fill: white;");
+            good_type.getChildren().add(button);
+            buttons.add(button);
+            button.setOnAction(event -> {
+                buttons.forEach(b ->
+                        b.setStyle(" -fx-background-color: linear-gradient(#ff5400, #be1d00);\n" +
+                                "    -fx-background-radius: 30;\n" +
+                                "    -fx-background-insets: 0;\n" +
+                                "    -fx-text-fill: white;")
+                );
+                button.setStyle("-fx-background-color: linear-gradient(#ffbc0a, #be6505);"
+                        + "    -fx-background-radius: 30;\n" +
+                        "    -fx-background-insets: 0;\n" +
+                        "    -fx-text-fill: white;");
+                if(datas.isEmpty()){
+                    return;
+                }
+                datas.remove(1);
+            });
+        }
     }
 
     /**
      * 初始化图标控件
      */
     private void initImage() {
+        Tooltip goodstip = new Tooltip("商品列表");
         quotesBt.setImage(new Image(getClass().getResource("../image/list.png").toExternalForm()));
+        Tooltip.install(quotesBt, goodstip);
+
+        Tooltip charttip = new Tooltip("图表分析");
         chartAnalysis.setImage(new Image(getClass().getResource("../image/fenxi.png").toExternalForm()));
+        Tooltip.install(chartAnalysis, charttip);
+
+        Tooltip filetip = new Tooltip("文件");
         productInformation.setImage(new Image(getClass().getResource("../image/file.png").toExternalForm()));
+        Tooltip.install(productInformation, filetip);
+
+        Tooltip detailtip = new Tooltip("商品详情");
         dealDetails.setImage(new Image(getClass().getResource("../image/details.png").toExternalForm()));
+        Tooltip.install(dealDetails, detailtip);
+
+        Tooltip settip = new Tooltip("设置");
         systemSet.setImage(new Image(getClass().getResource("../image/seting.png").toExternalForm()));
+        Tooltip.install(systemSet, settip);
     }
 
     private void initBottom() {
@@ -111,13 +211,13 @@ public class RootController implements ControlledStage, Initializable {
             //这个是我把获取MainBottomController添加到这个Controller的底下布局，你不用管
             bottom_root.getChildren().add(loader);
             //获取MainBottomController
-            mainBottomController =   fxmlLoader.getController();
+            mainBottomController = fxmlLoader.getController();
             //执行获取MainBottomController更新的方法,以后tableview 点击的时候就可以调用这个方法来更新第二个Controller的数据了
-            mainBottomController.initDate(webEngine,isKLine,view_root);
+            mainBottomController.initDate(webEngine, isKLine, view_root);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        web.setOnMouseDragEntered(event -> System.out.println("不知道这个是什么"+event.getEventType().getName()));
+        web.setOnMouseDragEntered(event -> System.out.println("不知道这个是什么" + event.getEventType().getName()));
     }
 
 
@@ -188,144 +288,46 @@ public class RootController implements ControlledStage, Initializable {
     /**
      * 初始化商品列表
      */
+    @FXML
     private void initGoodTable() {
-
-        //设置数据源
-        final ObservableList<Commodity> datas = FXCollections.observableArrayList(new Commodity(1, "80008", "人参糖", 12.0, 10.3, 30, 0.12, 0.03, 35.0, 9.5, 20.3, 25.5, 56, 25.6, 33, 80, 23.1, 22.3, 10000, 0.00, 0.00, 0.00)
-                , new Commodity(2, "80008", "芝麻糖", 12.0, 10.3, 20, 1.12, 0.03, 35.0, 9.5, 20.3, 25.5, 56, 25.6, 33, 80, 23.1, 22.3, 10000, 0.00, 0.00, 0.00)
-                , new Commodity(3, "80009", "百度糖", 22.0, 20.3, 30, 2.12, 0.03, 35.0, 9.5, 20.3, 25.5, 56, 25.6, 33, 80, 23.1, 22.3, 10000, 0.00, 0.00, 0.00)
-                , new Commodity(4, "80010", "不知糖", 32.0, 30.3, 40, 3.12, 0.03, 35.0, 9.5, 20.3, 25.5, 56, 25.6, 33, 80, 23.1, 22.3, 10000, 0.00, 0.00, 0.00)
-                , new Commodity(5, "80011", "砂糖糖", 42.0, 40.3, 50, 4.12, 0.03, 35.0, 9.5, 20.3, 25.5, 56, 25.6, 33, 80, 23.1, 22.3, 10000, 0.00, 0.00, 0.00)
-                , new Commodity(6, "80012", "人参糖", 52.0, 50.3, 60, 5.12, 0.03, 35.0, 9.5, 20.3, 25.5, 56, 25.6, 33, 80, 23.1, 22.3, 10000, 0.00, 0.00, 0.00));
-
-        //设置列表
-        TableColumn number = new TableColumn("编号");
-        number.setMinWidth(40);
-        number.setCellValueFactory(
-                new PropertyValueFactory<>("number"));
-
-        TableColumn commNum = new TableColumn("商品代码");
-        commNum.setMinWidth(80);
-        commNum.setCellValueFactory(
-                new PropertyValueFactory<>("commNum"));
-
-        TableColumn commName = new TableColumn("商品名称");
-        commName.setMinWidth(80);
-        commName.setCellValueFactory(
-                new PropertyValueFactory<>("commName"));
-
-        TableColumn openPrice = new TableColumn("开盘价");
-        openPrice.setMinWidth(120);
-        openPrice.setCellValueFactory(
-                new PropertyValueFactory<>("openPrice"));
-
-        TableColumn newPrice = new TableColumn("最新价");
-        newPrice.setMinWidth(80);
-        newPrice.setCellValueFactory(
-                new PropertyValueFactory<>("newPrice"));
-
-        TableColumn count = new TableColumn("现量");
-        count.setMinWidth(80);
-        count.setCellValueFactory(
-                new PropertyValueFactory<>("count"));
-
-        TableColumn upDown = new TableColumn("涨跌");
-        upDown.setMinWidth(80);
-        upDown.setCellValueFactory(
-                new PropertyValueFactory<>("upDown"));
-
-        TableColumn extent = new TableColumn("幅度%");
-        extent.setMinWidth(80);
-        extent.setCellValueFactory(
-                new PropertyValueFactory<>("extent"));
-
-        TableColumn maxPrice = new TableColumn("最高价");
-        maxPrice.setMinWidth(80);
-        maxPrice.setCellValueFactory(
-                new PropertyValueFactory<>("maxPrice"));
-
-        TableColumn mixPrice = new TableColumn("最低价");
-        mixPrice.setMinWidth(80);
-        mixPrice.setCellValueFactory(
-                new PropertyValueFactory<>("mixPrice"));
-
-        TableColumn yestedayPrice = new TableColumn("昨收盘价");
-        yestedayPrice.setMinWidth(80);
-        yestedayPrice.setCellValueFactory(
-                new PropertyValueFactory<>("yestedayPrice"));
-
-        TableColumn comePrice = new TableColumn("买价");
-        comePrice.setMinWidth(80);
-        comePrice.setCellValueFactory(
-                new PropertyValueFactory<>("comePrice"));
-
-        TableColumn comeNumber = new TableColumn("买量");
-        comeNumber.setMinWidth(80);
-        comeNumber.setCellValueFactory(
-                new PropertyValueFactory<>("comeNumber"));
-
-        TableColumn outPrice = new TableColumn("卖价");
-        outPrice.setMinWidth(80);
-        outPrice.setCellValueFactory(
-                new PropertyValueFactory<>("outPrice"));
-
-        TableColumn outNumber = new TableColumn("卖量");
-        outNumber.setMinWidth(80);
-        outNumber.setCellValueFactory(
-                new PropertyValueFactory<>("outNumber"));
-
-        TableColumn overNumber = new TableColumn("成交量");
-        overNumber.setMinWidth(80);
-        overNumber.setCellValueFactory(
-                new PropertyValueFactory<>("overNumber"));
-
-        TableColumn overMoney = new TableColumn("成交金额");
-        overMoney.setMinWidth(80);
-        overMoney.setCellValueFactory(
-                new PropertyValueFactory<>("overMoney"));
-
-        TableColumn avgPrice = new TableColumn("均价");
-        avgPrice.setMinWidth(80);
-        avgPrice.setCellValueFactory(
-                new PropertyValueFactory<>("avgPrice"));
-
-        TableColumn stockNumber = new TableColumn("库存量");
-        stockNumber.setMinWidth(80);
-        stockNumber.setCellValueFactory(
-                new PropertyValueFactory<>("stockNumber"));
-
-        TableColumn numberScale = new TableColumn("量比%");
-        numberScale.setMinWidth(80);
-        numberScale.setCellValueFactory(
-                new PropertyValueFactory<>("numberScale"));
-
-        TableColumn trustScale = new TableColumn("委比%");
-        trustScale.setMinWidth(80);
-        trustScale.setCellValueFactory(
-                new PropertyValueFactory<>("trustScale"));
-
-        TableColumn exchangeScale = new TableColumn("换手率%");
-        exchangeScale.setMinWidth(80);
-        exchangeScale.setCellValueFactory(
-                new PropertyValueFactory<>("exchangeScale"));
         tb_goods.setItems(datas);
-        tb_goods.getColumns().setAll(number, commNum, commName, openPrice, newPrice,
-                count, upDown, extent, maxPrice, mixPrice, yestedayPrice, comePrice, comeNumber, outPrice,
-                outNumber, overNumber, overMoney, avgPrice, stockNumber, numberScale, trustScale, exchangeScale);
-        tb_goods.setRowFactory( tv -> {
+        number.setCellValueFactory(data -> data.getValue().numberProperty().asString());
+        commNum.setCellValueFactory(data -> data.getValue().commNumProperty());
+        commName.setCellValueFactory(data -> data.getValue().commNameProperty());
+        openPrice.setCellValueFactory(data -> data.getValue().openPriceProperty().asString());
+        newPrice.setCellValueFactory(data -> data.getValue().newPriceProperty().asString());
+        count.setCellValueFactory(data -> data.getValue().countProperty().asString());
+        upDown.setCellValueFactory(data -> data.getValue().upDownProperty().asString());
+        extent.setCellValueFactory(data -> data.getValue().extentProperty().asString());
+        maxPrice.setCellValueFactory(data -> data.getValue().maxPriceProperty().asString());
+        mixPrice.setCellValueFactory(data -> data.getValue().mixPriceProperty().asString());
+        yestedayPrice.setCellValueFactory(data -> data.getValue().yestedayPriceProperty().asString());
+        comePrice.setCellValueFactory(data -> data.getValue().comePriceProperty().asString());
+        comeNumber.setCellValueFactory(data -> data.getValue().comePriceProperty().asString());
+        outPrice.setCellValueFactory(data -> data.getValue().outPriceProperty().asString());
+        outNumber.setCellValueFactory(data -> data.getValue().outNumberProperty().asString());
+        overNumber.setCellValueFactory(data -> data.getValue().overNumberProperty().asString());
+        overMoney.setCellValueFactory(data -> data.getValue().overMoneyProperty().asString());
+        avgPrice.setCellValueFactory(data -> data.getValue().avgPriceProperty().asString());
+        stockNumber.setCellValueFactory(data -> data.getValue().stockNumberProperty().asString());
+        numberScale.setCellValueFactory(data -> data.getValue().numberScaleProperty().asString());
+        trustScale.setCellValueFactory(data -> data.getValue().trustScaleProperty().asString());
+        exchangeScale.setCellValueFactory(data -> data.getValue().exchangeScaleProperty().asString());
+
+        tb_goods.setRowFactory(tv -> {
             TableRow<Commodity> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
-                if(! row.isEmpty() && event.getButton() == MouseButton.PRIMARY ){
+                if (!row.isEmpty() && event.getButton() == MouseButton.PRIMARY) {
                     Commodity commodity = row.getItem();
-                    if(event.getClickCount() == 2){
+                    if (event.getClickCount() == 2) {
                         setRowOnTwoClick(commodity);
-                    }else if(event.getClickCount() == 1){
+                    } else if (event.getClickCount() == 1) {
                         setRowOnOneClick(commodity);
                     }
 
                 }
             });
-            return  row;
+            return row;
         });
 
     }
@@ -333,32 +335,30 @@ public class RootController implements ControlledStage, Initializable {
 
     /**
      * 单击设置数据到买入，卖出中
+     *
      * @param commodity
      */
-    @FXML
     private void setRowOnOneClick(Commodity commodity) {
         mainBottomController.setTableViewOneClick(commodity);
     }
 
     /**
      * 双击进入分时图
+     *
      * @param commodity
      */
-    @FXML
     private void setRowOnTwoClick(Commodity commodity) {
         kView.setVisible(true);
-        tb_goods.setVisible(false);
+        goods_root.setVisible(false);
         mainBottomController.setIsKLine(true);
+        isKLine = true;
         webEngine.load(getClass().getResource("../html/fenshi.html").toExternalForm());
-    }
-
-    private void onClick() {
-
     }
 
 
     /**
-     *进入交易
+     * 进入交易
+     *
      * @param e
      */
     public void toTranstion(ActionEvent e) {
@@ -377,8 +377,8 @@ public class RootController implements ControlledStage, Initializable {
      */
     public void fenshiKLine(ActionEvent event) {
         kView.setVisible(true);
-        tb_goods.setVisible(false);
-        isKLine=true;
+        goods_root.setVisible(false);
+        isKLine = true;
         mainBottomController.setIsKLine(isKLine);
         webEngine.load(getClass().getResource("../html/fenshi.html").toExternalForm());
     }
@@ -390,8 +390,8 @@ public class RootController implements ControlledStage, Initializable {
      */
     public void oneMinuteKLine(ActionEvent event) {
         kView.setVisible(true);
-        tb_goods.setVisible(false);
-        isKLine=true;
+        goods_root.setVisible(false);
+        isKLine = true;
         mainBottomController.setIsKLine(isKLine);
         webEngine.load(getClass().getResource("../html/highstockTest.html").toExternalForm());
     }
@@ -402,10 +402,9 @@ public class RootController implements ControlledStage, Initializable {
      * @param event
      */
     public void fiveMinuteKLine(ActionEvent event) {
-
         kView.setVisible(true);
-        tb_goods.setVisible(false);
-        isKLine=true;
+        goods_root.setVisible(false);
+        isKLine = true;
         mainBottomController.setIsKLine(isKLine);
         webEngine.load(getClass().getResource("../html/highstockTest.html").toExternalForm());
     }
@@ -417,8 +416,8 @@ public class RootController implements ControlledStage, Initializable {
      */
     public void tenMinuteKLine(ActionEvent event) {
         kView.setVisible(true);
-        tb_goods.setVisible(false);
-        isKLine=true;
+        goods_root.setVisible(false);
+        isKLine = true;
         mainBottomController.setIsKLine(isKLine);
         webEngine.load(getClass().getResource("../html/highstockTest.html").toExternalForm());
     }
@@ -430,8 +429,8 @@ public class RootController implements ControlledStage, Initializable {
      */
     public void fifteenMinuteKLine(ActionEvent event) {
         kView.setVisible(true);
-        tb_goods.setVisible(false);
-        isKLine=true;
+        goods_root.setVisible(false);
+        isKLine = true;
         mainBottomController.setIsKLine(isKLine);
         webEngine.load(getClass().getResource("../html/highstockTest.html").toExternalForm());
     }
@@ -443,8 +442,8 @@ public class RootController implements ControlledStage, Initializable {
      */
     public void thrityMinuteKLine(ActionEvent event) {
         kView.setVisible(true);
-        tb_goods.setVisible(false);
-        isKLine=true;
+        goods_root.setVisible(false);
+        isKLine = true;
         mainBottomController.setIsKLine(isKLine);
         webEngine.load(getClass().getResource("../html/highstockTest.html").toExternalForm());
     }
@@ -457,8 +456,8 @@ public class RootController implements ControlledStage, Initializable {
      */
     public void sixtyMinuteKLine(ActionEvent event) {
         kView.setVisible(true);
-        tb_goods.setVisible(false);
-        isKLine=true;
+        goods_root.setVisible(false);
+        isKLine = true;
         mainBottomController.setIsKLine(isKLine);
         webEngine.load(getClass().getResource("../html/highstockTest.html").toExternalForm());
     }
@@ -470,8 +469,8 @@ public class RootController implements ControlledStage, Initializable {
      */
     public void dayKLine(ActionEvent event) {
         kView.setVisible(true);
-        tb_goods.setVisible(false);
-        isKLine=true;
+        goods_root.setVisible(false);
+        isKLine = true;
         mainBottomController.setIsKLine(isKLine);
         webEngine.load(getClass().getResource("../html/highstockTest.html").toExternalForm());
     }
@@ -483,8 +482,8 @@ public class RootController implements ControlledStage, Initializable {
      */
     public void weekKLine(ActionEvent event) {
         kView.setVisible(true);
-        tb_goods.setVisible(false);
-        isKLine=true;
+        goods_root.setVisible(false);
+        isKLine = true;
         mainBottomController.setIsKLine(isKLine);
         webEngine.load(getClass().getResource("../html/highstockTest.html").toExternalForm());
     }
@@ -496,44 +495,48 @@ public class RootController implements ControlledStage, Initializable {
      */
     public void monthKLine(ActionEvent event) {
         kView.setVisible(true);
-        tb_goods.setVisible(false);
-        isKLine=true;
+        goods_root.setVisible(false);
+        isKLine = true;
         mainBottomController.setIsKLine(isKLine);
         webEngine.load(getClass().getResource("../html/highstockTest.html").toExternalForm());
     }
 
     /**
      * 列表
+     *
      * @param event
      */
-    public void homeClick(MouseEvent event){
+    public void homeClick(MouseEvent event) {
         kView.setVisible(false);
-        isKLine=false;
-        tb_goods.setVisible(true);
+        isKLine = false;
+        goods_root.setVisible(true);
         mainBottomController.setIsKLine(isKLine);
     }
 
     /**
      * K线查看
+     *
      * @param event
      */
-    public void kLineClick(MouseEvent event){
-        tb_goods.setVisible(false);
+    public void kLineClick(MouseEvent event) {
+        goods_root.setVisible(false);
         kView.setVisible(true);
-        isKLine=true;
+        isKLine = true;
         mainBottomController.setIsKLine(isKLine);
         webEngine.load(getClass().getResource("../html/test.html").toExternalForm());
     }
 
     /**
      * 商品详情
+     *
      * @param event
      */
-    public void productInformation(MouseEvent event){
+    public void productInformation(MouseEvent event) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/product.fxml"));
         try {
             Pane tempPane = loader.load();
-            Scene scene = new Scene(tempPane,900,700); Stage dialog = new Stage();
+            Scene scene = new Scene(tempPane, 900, 700);
+            Stage dialog = new Stage();
             dialog.initStyle(StageStyle.UTILITY);
             dialog.setScene(scene);
             dialog.show();
@@ -545,33 +548,144 @@ public class RootController implements ControlledStage, Initializable {
 
     /**
      * 设置
+     *
      * @param event
      */
-    public void setIng (MouseEvent event){
+    public void setIng(MouseEvent event) {
+        new SystemSetDialog();
+    }
 
-        List<String> choices = new ArrayList<>();
-        choices.add("清空");
-        choices.add("不清空");
+    /**
+     * 系统设置
+     *
+     * @param event
+     */
+    @FXML
+    private void systemSet(ActionEvent event) {
+        new SystemSetDialog();
+    }
 
-        ChoiceDialog<String> dialog = new ChoiceDialog<>("不清空", choices);
-        dialog.setTitle("系统设置");
-        dialog.setContentText("委托后界面设置:");
+    /**
+     * @param event
+     */
+    public void dealDetails(MouseEvent event) {
+    }
 
-        Optional<String> result = dialog.showAndWait();
-        if (result.isPresent()){
-            System.out.println("Your choice: " + result.get());
-        }
-
-        result.ifPresent(letter -> System.out.println("Your choice: " + letter));
+    /**
+     * 历史查询
+     *
+     * @param event
+     */
+    @FXML
+    private void historyQurey(ActionEvent event) {
 
     }
 
     /**
+     * 申诉/投诉
+     *
+     * @param e
+     */
+    @FXML
+    private void complaints(ActionEvent e) {
+        new ComplaintsDialog();
+    }
+
+    /**
+     * 地址管理
+     *
+     * @param e
+     */
+    @FXML
+    private void addressManege(ActionEvent e) {
+
+    }
+
+    /**
+     * 关于
      *
      * @param event
      */
-    public  void dealDetails(MouseEvent event){
+    @FXML
+    private void aboutMe(ActionEvent event) {
+
     }
+
+    /**
+     * 签约申请
+     *
+     * @param event
+     */
+    @FXML
+    private void signed(ActionEvent event) {
+        new SignedDialog(Constant.SIGNED);
+    }
+
+    /**
+     * 解约申请
+     *
+     * @param event
+     */
+    @FXML
+    private void termination(ActionEvent event) {
+        new SignedDialog(Constant.TERMINATION);
+    }
+
+    /**
+     * 出金
+     *
+     * @param event
+     */
+    @FXML
+    private void outMoney(ActionEvent event) {
+        new OutMoneyDialog();
+    }
+
+    /**
+     * 客户报表
+     *
+     * @param event
+     */
+    @FXML
+    private void clientReport(ActionEvent event) {
+
+    }
+
+    /**
+     * 计算器
+     *
+     * @param event
+     */
+    @FXML
+    private void calculator(ActionEvent event) {
+        Runtime runtime = Runtime.getRuntime();
+        try {
+            runtime.exec("calc");
+        } catch (Exception e) {
+            System.out.println("Error!");
+        }
+    }
+
+    /**
+     * 刷新
+     *
+     * @param e
+     */
+    @FXML
+    private void refresh(ActionEvent e) {
+
+    }
+
+    /**
+     * 恢复默认布局
+     *
+     * @param event
+     */
+    @FXML
+    private void restore(ActionEvent event) {
+
+    }
+
 
     /**
      * 关闭应用

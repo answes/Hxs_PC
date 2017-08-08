@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="250.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+    <VBox alignment="CENTER" prefWidth="400" spacing="12" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+
+                <HBox alignment="CENTER" spacing="3">
+                    <Label text="委托后界面设置:" />
+                    <ChoiceBox fx:id="ss" prefWidth="150.0" />
+         <VBox.margin>
+            <Insets top="12.0" />
+         </VBox.margin>
+                </HBox>
+    <HBox alignment="CENTER" spacing="3">
+        <Label text="      委托前确认:" />
+        <ChoiceBox prefWidth="150.0" />
+    </HBox>
+    <HBox alignment="CENTER" spacing="3">
+        <Label text="   委托成功提示:" />
+        <ChoiceBox prefWidth="150.0" />
+    </HBox>
+    <HBox alignment="CENTER" spacing="3">
+        <Label text="      撤单前提示:" />
+        <ChoiceBox prefWidth="150.0" />
+    </HBox>
+    <HBox alignment="CENTER" spacing="3">
+        <Label text="         锁屏时间:" />
+        <ChoiceBox prefWidth="150.0" />
+    </HBox>
+    </VBox>
+    <HBox AnchorPane.bottomAnchor="12">
+        <Button prefHeight="30.0" prefWidth="120.0" text="确定" textAlignment="CENTER">
+         <HBox.margin>
+            <Insets left="50.0" />
+         </HBox.margin></Button>
+        <Button prefHeight="30.0" prefWidth="120.0" text="取消">
+         <HBox.margin>
+            <Insets left="50.0" />
+         </HBox.margin></Button>
+    </HBox>
+</AnchorPane>

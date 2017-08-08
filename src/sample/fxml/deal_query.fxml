@@ -1,24 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="sample.Controller.DealQueryController"
-             AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" >
-    <HBox prefHeight="35.0" alignment="CENTER">
-        <CheckBox text="当前"/>
-        <CheckBox text="历史"/>
-        <Label text="开始日期"/>
+<AnchorPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.DealQueryController">
+    <HBox alignment="CENTER" prefHeight="35.0">
+        <CheckBox text="当前" />
+        <CheckBox text="历史" />
+        <Label text="开始日期" />
         <DatePicker />
-        <Label text="结束日期"/>
+        <Label text="结束日期" />
         <DatePicker />
-        <Button text="查询"/>
+        <Button text="查询" />
     </HBox>
-    <TableView  AnchorPane.topAnchor="35.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+    <TableView fx:id="tb_weituo" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0">
+      <columns>
+         <TableColumn prefWidth="75.0" text="委托单号" />
+         <TableColumn prefWidth="75.0" text="商品代码" />
+         <TableColumn prefWidth="75.0" text="商品名称" />
+          <TableColumn prefWidth="75.0" text="买/卖" />
+         <TableColumn prefWidth="75.0" text="委托价格" />
+         <TableColumn prefWidth="75.0" text="委托数量" />
+         <TableColumn prefWidth="75.0" text="未成交数量" />
+         <TableColumn prefWidth="75.0" text="状态" />
+         <TableColumn prefWidth="75.0" text="委托时间" />
+      </columns>
+    </TableView>
+    <TableView fx:id="tb_deal" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0">
+        <columns>
+            <TableColumn prefWidth="75.0" text="成交单号" />
+            <TableColumn prefWidth="130.0" text="成交时间" />
+            <TableColumn prefWidth="75.0" text="商品代码" />
+            <TableColumn prefWidth="75.0" text="商品名称" />
+            <TableColumn prefWidth="75.0" text="买/卖" />
+            <TableColumn prefWidth="75.0" text="成交价格" />
+            <TableColumn prefWidth="75.0" text="数量" />
+            <TableColumn prefWidth="75.0" text="卖出盈亏" />
+            <TableColumn prefWidth="75.0" text="持仓价" />
+            <TableColumn prefWidth="75.0" text="费用" />
+        </columns>
+    </TableView>
+    <TableView fx:id="tb_shengou" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0">
+        <columns>
+            <TableColumn prefWidth="75.0" text="委托单号" />
+            <TableColumn prefWidth="75.0" text="商品代码" />
+            <TableColumn prefWidth="75.0" text="商品名称" />
+            <TableColumn prefWidth="75.0" text="委托价格" />
+            <TableColumn prefWidth="75.0" text="委托数量" />
+            <TableColumn prefWidth="75.0" text="申购冻结金额" />
+            <TableColumn prefWidth="75.0" text="成交数量" />
+            <TableColumn prefWidth="75.0" text="成交金额" />
+            <TableColumn prefWidth="75.0" text="状态" />
+            <TableColumn prefWidth="75.0" text="委托时间" />
+        </columns>
+    </TableView>
+    <TableView fx:id="tb_peishou" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0">
+        <columns>
+            <TableColumn prefWidth="75.0" text="商品代码" />
+            <TableColumn prefWidth="75.0" text="商品名称" />
+            <TableColumn prefWidth="75.0" text="配售单号" />
+            <TableColumn prefWidth="75.0" text="配售类型" />
+            <TableColumn prefWidth="75.0" text="买/卖" />
+            <TableColumn prefWidth="75.0" text="配售价格" />
+            <TableColumn prefWidth="75.0" text="预配售数量" />
+            <TableColumn prefWidth="75.0" text="配售数量" />
+            <TableColumn prefWidth="75.0" text="预配售货款" />
+            <TableColumn prefWidth="75.0" text="配售货款" />
+            <TableColumn prefWidth="75.0" text="预配售手续费" />
+            <TableColumn prefWidth="75.0" text="配售手续费" />
+            <TableColumn prefWidth="130.0" text="登记日期" />
+            <TableColumn prefWidth="130.0" text="配售成交日期" />
+            <TableColumn prefWidth="75.0" text="配售进度" />
+            <TableColumn prefWidth="75.0" text="配售状态" />
+            <TableColumn prefWidth="75.0" text="备注" />
+        </columns>
     </TableView>
 </AnchorPane>

@@ -6,8 +6,9 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.chart.LineChart;
 import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -27,13 +28,13 @@ public class LoginController implements ControlledStage, Initializable {
     @FXML
     private ComboBox cb_transaction_type; //项目类型
     @FXML
-    private javafx.scene.control.TextField tf_user_name; //用户名称
+    private TextField tf_user_name; //用户名称
     @FXML
-    private javafx.scene.control.TextField tf_code; //验证码
+    private TextField tf_code; //验证码
     @FXML
     private CheckBox cb_save_username; //保存验证码
     @FXML
-    private javafx.scene.control.Label lb_image_code; //验证码图片
+    private Label lb_image_code; //验证码图片
     @FXML
     private Pane loginTitle;
     @FXML
@@ -53,29 +54,22 @@ public class LoginController implements ControlledStage, Initializable {
         lb_image_code.setGraphic(new ImageView(image));
 
 
-        loginTitle.setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                event.consume();
-                xOffset = event.getSceneX();
-                yOffset = event.getSceneY();
-            }
+        loginTitle.setOnMousePressed(event -> {
+            event.consume();
+            xOffset = event.getSceneX();
+            yOffset = event.getSceneY();
         });
 
-        loginTitle.setOnMouseDragged(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                event.consume();
-                myController.getStage(Constant.loginViewID).setX(event.getScreenX() - xOffset);
-                //根据自己的需求，做不同的判断
-                if (event.getScreenY() - yOffset < 0) {
-                    myController.getStage(Constant.loginViewID).setY(0);
-                } else {
-                    myController.getStage(Constant.loginViewID).setY(event.getScreenY() - yOffset);
-                }
+        loginTitle.setOnMouseDragged(event -> {
+            event.consume();
+            myController.getStage(Constant.loginViewID).setX(event.getScreenX() - xOffset);
+            //根据自己的需求，做不同的判断
+            if (event.getScreenY() - yOffset < 0) {
+                myController.getStage(Constant.loginViewID).setY(0);
+            } else {
+                myController.getStage(Constant.loginViewID).setY(event.getScreenY() - yOffset);
             }
         });
-
     }
 
 

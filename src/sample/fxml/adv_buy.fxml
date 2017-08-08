@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
@@ -38,16 +39,16 @@
             </HBox>
 
             <HBox alignment="CENTER" spacing="6">
-                <Label text="买入价格"  fx:id="lb_buy_price"/>
+                <Label fx:id="lb_buy_price" text="买入价格" />
                 <TextField fx:id="tf_buy_price" prefWidth="85.0" />
             </HBox>
             <HBox alignment="CENTER" spacing="6">
-                <Label text="可买数量" fx:id="lb_can_buynum" />
+                <Label fx:id="lb_can_buynum" text="可买数量" />
                 <TextField fx:id="tf_can_butnum" disable="true" prefWidth="85.0" text="12" />
             </HBox>
             <HBox alignment="CENTER" spacing="6">
-                <Label text="买入数量" fx:id="lb_buy_num"/>
-                <TextField  disable="false" prefWidth="85.0" text="12" />
+                <Label fx:id="lb_buy_num" text="买入数量" />
+                <TextField disable="false" prefWidth="85.0" text="12" />
             </HBox>
             <VBox alignment="CENTER">
                 <Button text="提交" />
@@ -189,5 +190,14 @@
             </HBox>
         </VBox>
     </AnchorPane>
-    <TableView fx:id="tb_details" prefHeight="400.0" prefWidth="624.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+    <TableView fx:id="tb_details" prefHeight="400.0" prefWidth="624.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <columns>
+         <TableColumn fx:id="number" prefWidth="75.0" resizable="false" text="序号" />
+         <TableColumn fx:id="goodNum" prefWidth="75.0" resizable="false" text="商品代码" />
+         <TableColumn fx:id="goodName" prefWidth="75.0" resizable="false" text="商品名称" />
+         <TableColumn fx:id="business" prefWidth="75.0" resizable="false" text="买/卖" />
+         <TableColumn fx:id="price" prefWidth="75.0" resizable="false" text="预埋价格" />
+         <TableColumn fx:id="num" prefWidth="75.0" resizable="false" text="预埋数量" />
+         <TableColumn fx:id="date" prefWidth="150.0" text="预埋时间" />
+      </columns></TableView>
 </AnchorPane>

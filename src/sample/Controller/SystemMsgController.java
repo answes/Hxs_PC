@@ -26,11 +26,11 @@ public class SystemMsgController implements Initializable {
         new SystemMsg("5","关于十一放假通知关于十一放假通知关于十一放假通知关于十一放假通知关于十一放假通知","关于十一放假通知","2017-09-25"));
 
         lv_msg.setItems(listdata);
-        lv_msg.setCellFactory(param ->{
-        return new SystemMsgItem();}
-        );
-        lv_msg.getSelectionModel().selectionModeProperty().addListener((observable, oldValue, newValue) -> {
-            System.out.println(newValue.getDeclaringClass().getName());
+        lv_msg.setCellFactory(param -> new SystemMsgItem());
+        //添加事件的监听
+        lv_msg.setOnMouseClicked(event ->{
+            SystemMsg msg =  lv_msg.getSelectionModel().getSelectedItem();
+            //这里打开一个浏览器网页  还是用原生的打开网页？
         });
     }
 }
