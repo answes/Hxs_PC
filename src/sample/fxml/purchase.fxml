@@ -1,36 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<?import javafx.scene.control.TableView?>
 <AnchorPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.PurchaseController">
-    <VBox prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: aquamarine" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <Label text="申购" />
-       <HBox> <Label text="商品代码" /> <ChoiceBox prefHeight="23.0" prefWidth="161.0" /></HBox>
-        <HBox>
-            <Label text="商品名称" />
+
+    <stylesheets>
+        <URL value="@../css/purchase.css" />
+    </stylesheets>
+
+    <VBox prefHeight="400.0" prefWidth="300.0" spacing="10" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <Label fx:id="lb_title" text="申购" />
+       <HBox spacing="8"> <Label alignment="CENTER_RIGHT" prefHeight="23.0" prefWidth="100" text="商品代码" /> <ChoiceBox prefHeight="23.0" prefWidth="161.0" /></HBox>
+        <HBox spacing="8">
+            <Label alignment="CENTER_RIGHT" prefHeight="23.0" prefWidth="100" text="商品名称" />
             <TextField disable="false" />
         </HBox>
-        <HBox>
-            <Label text="发行价格" />
+        <HBox spacing="8">
+            <Label alignment="CENTER_RIGHT" prefHeight="23.0" prefWidth="100" text="发行价格" />
             <TextField disable="false" />
         </HBox>
-        <HBox>
-            <Label text="参考可申购量" />
+        <HBox spacing="8">
+            <Label alignment="CENTER_RIGHT" prefHeight="23.0" prefWidth="100" text="参考可申购量" />
             <TextField disable="false" />
         </HBox>
-        <HBox>
-            <Label text="申购数量" />
+        <HBox spacing="8">
+            <Label alignment="CENTER_RIGHT" prefHeight="23.0" prefWidth="100" text="申购数量" />
             <TextField disable="true" />
         </HBox>
-        <Button text="提交" />
+        <Button fx:id="bt_submit" prefHeight="30" prefWidth="100" text="提交">
+            <VBox.margin>
+                <Insets left="100" top="50" />
+            </VBox.margin>
+        </Button>
     </VBox>
-    <TableView
-    AnchorPane.leftAnchor="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" AnchorPane.rightAnchor="0.0"/>
+    <TableView fx:id="tb_detail" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <columns>
+         <TableColumn fx:id="number" prefWidth="75.0" text="商品代码" />
+         <TableColumn fx:id="name" prefWidth="75.0" text="商品名称" />
+         <TableColumn fx:id="price" prefWidth="75.0" text="发行价格" />
+         <TableColumn fx:id="minSG" prefWidth="75.0" text="最小申购量" />
+         <TableColumn fx:id="maxSG" prefWidth="75.0" text="最大申购量" />
+         <TableColumn fx:id="minBD" prefWidth="75.0" text="最小变动量" />
+         <TableColumn fx:id="startTime" prefWidth="75.0" text="发行开始时间" />
+         <TableColumn fx:id="endTime" prefWidth="75.0" text="发行结束时间" />
+      </columns></TableView>
 </AnchorPane>

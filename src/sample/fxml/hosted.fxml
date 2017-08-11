@@ -6,38 +6,49 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import java.net.URL?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="sample.Controller.HostedCotroller"
+            prefWidth="1000"
             AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-    <VBox prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: aquamarine" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <Label text="托管申请" />
-        <HBox> <Label text="托管计划" /> <ChoiceBox prefHeight="23.0" prefWidth="161.0" /></HBox>
+    <stylesheets>
+        <URL value="@../css/hosted.css"/>
+    </stylesheets>
+    <VBox spacing="10" prefHeight="400.0" prefWidth="300.0"  AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="0.0">
+        <Label fx:id="title" text="托管申请" />
+        <HBox> <Label text="托管计划" prefWidth="70" /><TextField disable="false" /></HBox>
         <HBox>
-            <Label text="商品代码" />
+            <Label prefWidth="70" text="商品代码" />
             <TextField disable="false" />
         </HBox>
         <HBox>
-            <Label text="商品名称" />
+            <Label prefWidth="70" text="商品名称" />
             <TextField disable="false" />
         </HBox>
         <HBox>
-            <Label text="备注" />
+            <Label prefWidth="70" text="备注" />
             <TextField disable="false" />
         </HBox>
         <HBox>
-            <Label text="仓库" />
-            <ChoiceBox />
+            <Label prefWidth="70" text="仓库" />
+            <ChoiceBox prefHeight="23.0" prefWidth="160.0" />
         </HBox>
         <HBox>
-            <Label text="申请数量" />
+            <Label prefWidth="70" text="申请数量" />
             <TextField disable="false" />
         </HBox>
-        <Button text="提交" />
+        <Button fx:id="bt_submit" text="提交" prefWidth="100" prefHeight="30" />
     </VBox>
-    <HBox AnchorPane.leftAnchor="300.0" AnchorPane.bottomAnchor="0.0"  style="-fx-background-color: #BDE8FF" AnchorPane.topAnchor="0.0" AnchorPane.rightAnchor="0.0" prefHeight="30.0" alignment="CENTER">
-       <Label text="商品代码" /> <ChoiceBox /> <Button text="查询"/>
+    <HBox spacing="12" AnchorPane.leftAnchor="330.0"   AnchorPane.topAnchor="0.0" AnchorPane.rightAnchor="0.0" prefHeight="40.0" alignment="CENTER_LEFT">
+       <Label text="商品代码" /> <ChoiceBox  prefHeight="30" prefWidth="160"/> <Button prefWidth="80" prefHeight="30" text="查询"/>
     </HBox>
     <TableView
-            AnchorPane.leftAnchor="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="40.0" AnchorPane.rightAnchor="0.0"/>
+            AnchorPane.leftAnchor="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="40.0" AnchorPane.rightAnchor="0.0">
+        <columns>
+            <TableColumn prefWidth="75" text="商品代码"/>
+            <TableColumn prefWidth="75" text="商品名称"/>
+            <TableColumn prefWidth="75" text="托管计划"/>
+        </columns>
+    </TableView>
 </AnchorPane>

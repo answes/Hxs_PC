@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="sample.Controller.SystemMsgController"
-            AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-    <ListView fx:id="lv_msg" prefHeight="365" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-    </ListView>
+<AnchorPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.SystemMsgController">
+    <!--<ListView fx:id="lv_msg" prefHeight="365" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">-->
+    <!--</ListView>-->
+    <TableView fx:id="tb_msg" prefHeight="365" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <columns>
+         <TableColumn fx:id="msgId" prefWidth="75.0" text="公告ID" />
+         <TableColumn fx:id="msgDate" prefWidth="75.0" text="公告时间" />
+         <TableColumn fx:id="msgTitle" prefWidth="300.0" text="公告标题" />
+         <TableColumn fx:id="msgType" prefWidth="75.0" text="公告类型" />
+         <TableColumn fx:id="msgUser" prefWidth="75.0" text="发布者" />
+         <TableColumn fx:id="msgState" prefWidth="75.0" text="阅读状态" />
+      </columns>
+    </TableView>
 </AnchorPane>

@@ -1,22 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="sample.Controller.PositionController"
-            AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-    <HBox prefHeight="35.0" alignment="CENTER">
-        <CheckBox text="当前"/>
-        <CheckBox text="历史"/>
+<AnchorPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+            AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="sample.Controller.PositionController">
+    <stylesheets>
+        <URL value="@../css/postion.css"/>
+    </stylesheets>
+    <HBox alignment="CENTER" prefHeight="35.0" spacing="10">
+        <HBox.margin>
+            <Insets left="10"/>
+        </HBox.margin>
+        <CheckBox fx:id="cb_now" text="当前"/>
+        <CheckBox fx:id="cb_history" text="历史"/>
         <Label text="日期"/>
-        <DatePicker />
+        <DatePicker/>
         <Button text="查询"/>
     </HBox>
-    <TableView prefHeight="365" AnchorPane.topAnchor="35.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+    <TableView fx:id="tb_deal" prefHeight="365" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+               AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0">
+        <columns>
+            <TableColumn prefWidth="75" text="委托单号"/>
+            <TableColumn prefWidth="75" text="成交单号"/>
+            <TableColumn prefWidth="75" text="成交时间"/>
+            <TableColumn prefWidth="75" text="商品代码"/>
+            <TableColumn prefWidth="75" text="商品名称"/>
+            <TableColumn prefWidth="75" text="申购数量"/>
+            <TableColumn prefWidth="75" text="中签数量"/>
+            <TableColumn prefWidth="75" text="成交价格"/>
+            <TableColumn prefWidth="75" text="成交金额"/>
+            <TableColumn prefWidth="75" text="发行服务费"/>
+        </columns>
+    </TableView>
+    <TableView fx:id="tb_sum" prefHeight="365" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+               AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0">
+        <columns>
+            <TableColumn prefWidth="75.0" text="商品代码"/>
+            <TableColumn prefWidth="75.0" text="商品名称"/>
+            <TableColumn prefWidth="75.0" text="持仓均价"/>
+            <TableColumn prefWidth="75.0" text="现价"/>
+            <TableColumn prefWidth="75.0" text="总持有量"/>
+            <TableColumn prefWidth="75.0" text="货款"/>
+            <TableColumn prefWidth="75.0" text="可用数量"/>
+            <TableColumn prefWidth="75.0" text="持仓盈亏"/>
+            <TableColumn prefWidth="75.0" text="盈亏比例"/>
+            <TableColumn prefWidth="75.0" text="市值"/>
+        </columns>
+    </TableView>
+    <TableView fx:id="tb_detail" prefHeight="365" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+               AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0">
+        <columns>
+            <TableColumn prefWidth="75.0" text="持仓单号"/>
+            <TableColumn prefWidth="75.0" text="商品代码"/>
+            <TableColumn prefWidth="75.0" text="商品名称"/>
+            <TableColumn prefWidth="75.0" text="单据类型"/>
+            <TableColumn prefWidth="75.0" text="持有数量"/>
+            <TableColumn prefWidth="75.0" text="货款"/>
+            <TableColumn prefWidth="75.0" text="持有价"/>
+            <TableColumn prefWidth="75.0" text="现价"/>
+            <TableColumn prefWidth="75.0" text="持有盈亏"/>
+            <TableColumn prefWidth="75.0" text="持仓时间"/>
+        </columns>
     </TableView>
 </AnchorPane>

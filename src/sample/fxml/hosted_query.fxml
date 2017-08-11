@@ -1,26 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import java.net.URL?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="sample.Controller.HostedQueryConteroller"
-            AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-    <VBox prefHeight="65.0" prefWidth="1024.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" AnchorPane.leftAnchor="0.0">
-<HBox alignment="CENTER">
-    <HBox> <Label text="商品代码"/> <ChoiceBox /></HBox>
-    <HBox> <Label text="仓库"/> <ChoiceBox /></HBox>
-    <HBox> <Label text="状态"/> <ChoiceBox /></HBox>
-</HBox>
-    <HBox alignment="CENTER">
-        <HBox> <Label text="开始日期"/><DatePicker /> </HBox>
-        <HBox> <Label text="结束日期"/><DatePicker /> </HBox>
-        <Button text="查询"/>
-    </HBox>
+            AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+            AnchorPane.topAnchor="0.0">
+    <stylesheets>
+        <URL value="@../css/hosted_query.css"/>
+    </stylesheets>
+    <VBox spacing="10" prefHeight="75.0" prefWidth="1000.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0"
+          AnchorPane.leftAnchor="10.0">
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <HBox spacing="10" alignment="CENTER">
+                <Label text="商品代码"/>
+                <ChoiceBox prefWidth="160"/>
+            </HBox>
+            <HBox spacing="10" alignment="CENTER">
+                <Label text="仓库" />
+                <ChoiceBox prefWidth="160"/>
+            </HBox>
+            <HBox spacing="10" alignment="CENTER">
+                <Label text="状态"/>
+                <ChoiceBox prefWidth="160"/>
+            </HBox>
+        </HBox>
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <HBox spacing="10" alignment="CENTER">
+                <Label text="开始日期"/>
+                <DatePicker/>
+            </HBox>
+            <HBox spacing="10" alignment="CENTER">
+                <Label text="结束日期"/>
+                <DatePicker/>
+            </HBox>
+            <Button text="查询"/>
+        </HBox>
     </VBox>
-    <TableView  prefHeight="335.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="65.0"/>
+    <TableView prefHeight="325.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+               AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="75.0">
+        <columns>
+            <TableColumn text="托管单号" prefWidth="75"/>
+            <TableColumn text="商品代码" prefWidth="75"/>
+            <TableColumn text="商品名称" prefWidth="75"/>
+            <TableColumn text="仓库名称" prefWidth="75"/>
+            <TableColumn text="申请数量" prefWidth="75"/>
+            <TableColumn text="入库数量" prefWidth="75"/>
+            <TableColumn text="托管计划" prefWidth="75"/>
+            <TableColumn text="应付挂牌费" prefWidth="75"/>
+            <TableColumn text="应付滞纳金" prefWidth="75"/>
+            <TableColumn text="状态" prefWidth="75"/>
+            <TableColumn text="申请时间" prefWidth="75"/>
+            <TableColumn text="审核时间" prefWidth="75"/>
+            <TableColumn text="备注" prefWidth="75"/>
+        </columns>
+    </TableView>
 </AnchorPane>

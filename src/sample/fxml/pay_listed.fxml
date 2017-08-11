@@ -1,40 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="sample.Controller.PayListedController"
-            AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-    <VBox prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: aquamarine" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <Label text="支付挂牌费" />
-        <HBox> <Label text="商品代码" /> <ChoiceBox prefHeight="23.0" prefWidth="161.0" /></HBox>
-        <HBox>
-            <Label text="商品名称" />
+<AnchorPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.PayListedController">
+    <stylesheets>
+        <URL value="@../css/pay_listed.css" />
+    </stylesheets>
+    <VBox prefHeight="400.0" prefWidth="300.0" spacing="10" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="0.0">
+        <Label fx:id="title" text="支付挂牌费" />
+        <HBox alignment="CENTER_LEFT"> <Label prefWidth="70" text="商品代码" /> <ChoiceBox prefHeight="23.0" prefWidth="161.0" /></HBox>
+        <HBox alignment="CENTER_LEFT">
+            <Label prefWidth="70" text="商品名称" />
             <TextField disable="false" />
         </HBox>
-        <HBox>
-            <Label text="申请数量" />
+        <HBox alignment="CENTER_LEFT">
+            <Label prefWidth="70" text="申请数量" />
             <TextField disable="false" />
         </HBox>
-        <HBox>
-            <Label text="入库数量" />
+        <HBox alignment="CENTER_LEFT">
+            <Label prefWidth="70" text="入库数量" />
             <TextField disable="false" />
         </HBox>
-        <HBox>
-            <Label text="应付挂牌费" />
+        <HBox alignment="CENTER_LEFT">
+            <Label prefWidth="70" text="应付挂牌费" />
             <TextField disable="false" />
         </HBox>
-        <Button text="提交" />
-        <Label text="注：挂牌费在托管审核后自动支付，入账户资金不足，需要充值后手工缴纳挂牌费及纳金"/>
+        <Button fx:id="bt_submit" prefWidth="100" text="提交" />
+        <Label fx:id="tip" text="注：挂牌费在托管审核后自动支付, 入账户资金不足，需要充值后手工缴纳挂牌费及纳金" textAlignment="CENTER" />
     </VBox>
-    <HBox AnchorPane.leftAnchor="300.0" AnchorPane.bottomAnchor="0.0"  style="-fx-background-color: #BDE8FF" AnchorPane.topAnchor="0.0" AnchorPane.rightAnchor="0.0" prefHeight="40.0" alignment="CENTER">
-       <Label text="商品代码" /> <ChoiceBox /> <Button text="查询"/>
+    <HBox spacing="10" alignment="CENTER_LEFT" prefHeight="40.0"  AnchorPane.leftAnchor="320.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+       <Label prefWidth="70" text="商品代码" /> <ChoiceBox prefWidth="160" /> <Button prefWidth="100" text="查询" />
     </HBox>
-    <TableView
-            AnchorPane.leftAnchor="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="40.0" AnchorPane.rightAnchor="0.0"/>
+    <TableView AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
+        <columns>
+            <TableColumn prefWidth="75" text="托管单号" />
+            <TableColumn prefWidth="75" text="商品代码" />
+            <TableColumn prefWidth="75" text="商品名称" />
+            <TableColumn prefWidth="75" text="仓库名称" />
+            <TableColumn prefWidth="75" text="申请数量" />
+            <TableColumn prefWidth="75" text="入库数量" />
+            <TableColumn prefWidth="75" text="应付挂牌费" />
+            <TableColumn prefWidth="75" text="滞纳金" />
+            <TableColumn prefWidth="75" text="托管状态" />
+            <TableColumn prefWidth="75" text="支付状态" />
+        </columns>
+    </TableView>
 </AnchorPane>

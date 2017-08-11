@@ -1,43 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="sample.Controller.PlacingController"
-            AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-    <VBox prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: aquamarine" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <Label text="配售" />
-        <HBox> <Label text="配售单号" /><TextField disable="false" /></HBox>
-        <HBox>
-            <Label text="商品代码" />
-            <TextField disable="false" />
+<AnchorPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+            AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="sample.Controller.PlacingController">
+
+    <stylesheets>
+        <URL value="@../css/placing.css"/>
+    </stylesheets>
+    <VBox prefHeight="400.0" prefWidth="300.0" spacing="10"
+          AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <Label fx:id="title" text="配售"/>
+        <HBox spacing="8">
+            <VBox.margin>
+                <Insets left="10"/>
+            </VBox.margin>
+            <Label prefWidth="70" text="配售单号"/>
+            <TextField disable="false"/>
         </HBox>
-        <HBox>
-            <Label text="商品名称" />
-            <TextField disable="true" />
+        <HBox spacing="8">
+            <VBox.margin>
+                <Insets left="10"/>
+            </VBox.margin>
+            <Label prefWidth="70" text="商品代码"/>
+            <TextField disable="false"/>
         </HBox>
-        <HBox>
-            <Label text="配售价格" />
-            <TextField disable="false" />
+        <HBox spacing="8">
+            <VBox.margin>
+                <Insets left="10"/>
+            </VBox.margin>
+            <Label prefWidth="70" text="商品名称"/>
+            <TextField disable="true"/>
         </HBox>
-        <HBox>
-            <Label text="预配售数量" />
-            <TextField disable="true" />
+        <HBox spacing="8">
+            <VBox.margin>
+                <Insets left="10"/>
+            </VBox.margin>
+            <Label prefWidth="70" text="配售价格"/>
+            <TextField disable="false"/>
+        </HBox>
+        <HBox spacing="8">
+            <VBox.margin>
+                <Insets left="10"/>
+            </VBox.margin>
+            <Label prefWidth="70" text="预配售数量"/>
+            <TextField disable="true"/>
         </HBox>
 
-        <HBox>
-            <Label text="配售数量" />
-            <TextField disable="false" />
+        <HBox spacing="8">
+            <VBox.margin>
+                <Insets left="10"/>
+            </VBox.margin>
+            <Label prefWidth="70" text="配售数量"/>
+            <TextField disable="false"/>
         </HBox>
-        <HBox><CheckBox /> <Label text="阅读《协议配售书》" /></HBox>
+        <HBox alignment="CENTER" spacing="8">
+            <CheckBox/>
+            <Label text="阅读《协议配售书》"/>
+        </HBox>
 
-        <Button text="提交" />
+        <Button fx:id="bt_submit" prefHeight="30" prefWidth="120" text="提交">
+            <VBox.margin>
+                <Insets left="90" top="20"/>
+            </VBox.margin>
+        </Button>
     </VBox>
-    <TableView
-            AnchorPane.leftAnchor="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" AnchorPane.rightAnchor="0.0"/>
+    <TableView fx:id="tb_detail" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="0.0"
+               AnchorPane.topAnchor="0.0">
+        <columns>
+            <TableColumn prefWidth="75.0" text="商品代码"/>
+            <TableColumn prefWidth="75.0" text="商品名称"/>
+            <TableColumn prefWidth="75.0" text="配售单号"/>
+            <TableColumn prefWidth="75.0" text="买/卖"/>
+            <TableColumn prefWidth="75.0" text="配售价格"/>
+            <TableColumn prefWidth="75.0" text="预配售数量"/>
+            <TableColumn prefWidth="75.0" text="配售数量"/>
+            <TableColumn prefWidth="75.0" text="预配售货款"/>
+            <TableColumn prefWidth="75.0" text="配售货款"/>
+            <TableColumn prefWidth="75.0" text="配售开始日期"/>
+            <TableColumn prefWidth="75.0" text="配售结束日期"/>
+            <TableColumn prefWidth="75.0" text="配售状态"/>
+        </columns>
+    </TableView>
 </AnchorPane>

@@ -107,7 +107,17 @@ public class TranstationController implements Initializable {
         postionWin.setCellValueFactory(data-> data.getValue().postionWinProperty());
         winScale.setCellValueFactory(data-> data.getValue().winScaleProperty());
         marketValue.setCellValueFactory(data-> data.getValue().marketValueProperty());
-
+        //禁止对列的拖动
+        goodNum.impl_setReorderable(false);
+        goodName.impl_setReorderable(false);
+        avgPrice.impl_setReorderable(false);
+        nowPrice.impl_setReorderable(false);
+        count.impl_setReorderable(false);
+        loan.impl_setReorderable(false);
+        useNum.impl_setReorderable(false);
+        postionWin.impl_setReorderable(false);
+        winScale.impl_setReorderable(false);
+        marketValue.impl_setReorderable(false);
     }
 
 }

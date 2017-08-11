@@ -1,0 +1,12 @@
+
+#lb_title{
+    -fx-text-fill: #1d1d1d;
+    -fx-font-size: 18px;
+    -fx-padding:10 0  0 10;
+}
+
+.button{
+    -fx-background-radius: 5 5 5 5 ;
+    -fx-background-color: #5f83ff;
+    -fx-text-fill: white;
+}

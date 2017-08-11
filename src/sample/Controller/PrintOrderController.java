@@ -102,6 +102,7 @@ public class PrintOrderController implements Initializable {
                 return cell;
             }
         };
+
         cencal.setCellFactory(cellCallback);
     }
 }

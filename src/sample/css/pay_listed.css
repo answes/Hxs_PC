@@ -1,0 +1,23 @@
+#title{
+    -fx-text-fill: black;
+    -fx-font-size: 18px;
+    -fx-padding:10 0  0 0;
+}
+
+.button{
+    -fx-background-radius: 5 5 5 5 ;
+    -fx-background-color: #5f83ff;
+    -fx-text-fill: white;
+}
+#bt_submit{
+    -fx-background-radius: 5 5 5 5 ;
+    -fx-background-color: #5f83ff;
+    -fx-text-fill: white;
+    -fx-translate-x: 100;
+    -fx-translate-y:20;
+
+}
+#tip{
+    -fx-text-fill: red;
+    -fx-padding:30 0  0 0;
+}

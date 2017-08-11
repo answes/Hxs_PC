@@ -1,45 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import java.net.URL?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="sample.Controller.PickUpController"
-            AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-    <VBox prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: aquamarine" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <Label text="提货申请" />
-        <HBox> <Label text="商品代码" /> <ChoiceBox prefHeight="23.0" prefWidth="161.0" /></HBox>
-        <HBox>
-            <Label text="商品名称" />
-            <TextField disable="false" />
+            AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+            AnchorPane.topAnchor="0.0">
+    <stylesheets>
+        <URL value="@../css/pick_up.css"/>
+    </stylesheets>
+    <VBox spacing="10" prefWidth="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0"
+          AnchorPane.topAnchor="0.0">
+        <Label fx:id="title" text="提货申请"/>
+        <HBox alignment="CENTER_LEFT">
+            <Label text="商品代码" prefWidth="85"/>
+            <TextField disable="false"/>
         </HBox>
-        <HBox>
-            <Label text="交货仓库" />
-            <ChoiceBox />
+        <HBox alignment="CENTER_LEFT">
+            <Label text="商品名称" prefWidth="85"/>
+            <TextField disable="false"/>
         </HBox>
-        <HBox>
-            <Label text="交收件数" />
-            <TextField disable="false" />
+        <HBox alignment="CENTER_LEFT">
+            <Label text="交货仓库" prefWidth="85"/>
+            <ChoiceBox prefWidth="160"/>
         </HBox>
-        <HBox>
-            <Label text="交收数量" />
-            <TextField disable="false" />
+        <HBox alignment="CENTER_LEFT">
+            <Label text="交收件数" prefWidth="85"/>
+            <TextField disable="false"/>
         </HBox>
-        <HBox>
-            <Label text="可提货数量" />
+        <HBox alignment="CENTER_LEFT">
+            <Label text="交收数量" prefWidth="85"/>
+            <TextField disable="false"/>
+        </HBox>
+        <HBox alignment="CENTER_LEFT">
+            <Label text="可提货数量" prefWidth="85"/>
             <Label text="---"/>
         </HBox>
-        <HBox>
-            <Label text="提货日期（前）"/>
-            <DatePicker/>
+        <HBox alignment="CENTER_LEFT">
+            <Label text="提货日期（前）" prefWidth="85"/>
+            <DatePicker prefWidth="160"/>
         </HBox>
-        <Button text="注册提货单" />
+        <Button fx:id="bt_submit" text="注册提货单" prefWidth="100"/>
     </VBox>
 
     <TableView
-            AnchorPane.leftAnchor="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" AnchorPane.rightAnchor="0.0"/>
+            AnchorPane.leftAnchor="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0"
+            AnchorPane.rightAnchor="0.0">
+        <columns>
+            <TableColumn text="提货单号" prefWidth="75"/>
+            <TableColumn text="商品代码" prefWidth="75"/>
+            <TableColumn text="商品名称" prefWidth="75"/>
+            <TableColumn text="仓库名称" prefWidth="75"/>
+            <TableColumn text="交收件数" prefWidth="75"/>
+            <TableColumn text="交收数量" prefWidth="75"/>
+            <TableColumn text="单位" prefWidth="75"/>
+            <TableColumn text="提货截止期" prefWidth="75"/>
+            <TableColumn text="注册日期" prefWidth="75"/>
+            <TableColumn text="提货单状态" prefWidth="75"/>
+        </columns>
+    </TableView>
 </AnchorPane>
